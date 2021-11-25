@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="ico/favicon.png">
+
+    <script defer src="script/Objects.js"></script>
+    <script defer src="script/script.js"></script>
+</head>
+<body>
+<main class="main">
+    <div class="wrapper">
+        <div class="page">
+            <div class="title">
+                <h1>Pizza shop</h1>
+            </div>
+            <div class="container">
+                <form action="" class="form">
+                    <h3>Dough</h3>
+                    <ul>
+                        <li>
+                            <input type="radio" id="Standard" name="dough" onclick="viewImgDough()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Standard">Standard</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="Thin" name="dough" onclick="viewImgDough()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Thin">Thin</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="Thick" name="dough" onclick="viewImgDough()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Thick">Thick</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="Calzone" name="dough" onclick="viewImgDough()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Calzone">Calzone</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="Italian" name="dough" onclick="viewImgDough()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Italian">Italian</label>
+                        </li>
+                    </ul>
+                </form>
+                <form action="" class="form">
+                    <h3>Size</h3>
+                    <ul>
+                        <li>
+                            <input type="radio" id="Size_32" name="size" onclick="viewImgSize(32)">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Size_32">Size 32 cm</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="Size_40" name="size" onclick="viewImgSize(40)">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Size_40">Size 40 cm</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="Size_45" name="size" onclick="viewImgSize(45)">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Size_45">Size 45 cm</label>
+                        </li>
+                    </ul>
+                </form>
+                <form action="" class="form">
+                    <h3>Components</h3>
+                    <ul>
+                        <li>
+                            <input type="checkbox" name="components" id="Cheese" onclick="viewImgComponents()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Cheese">Cheese</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="components" id="Bacon" onclick="viewImgComponents()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Bacon">Bacon</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="components" id="Tomato" onclick="viewImgComponents()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Tomato">Tomato</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="components" id="Paprika" onclick="viewImgComponents()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Paprika">Paprika</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="components" id="Corn" onclick="viewImgComponents()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Corn">Corn</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="components" id="Pineapple" onclick="viewImgComponents()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Pineapple">Pineapple</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="components" id="Olives" onclick="viewImgComponents()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Olives">Olives</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="components" id="Shrimp" onclick="viewImgComponents()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Shrimp">Shrimp</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="components" id="Mushrooms" onclick="viewImgComponents()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Mushrooms">Mushrooms</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="components" id="Greens" onclick="viewImgComponents()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Greens">Greens</label>
+                        </li>
+                    </ul>
+                </form>
+                <form action="" class="form">
+                    <h3>Additionally</h3>
+                    <ul>
+                        <li>
+                            <input type="checkbox" name="additionally" id="Cheese_sauce"
+                                   onclick="viewImgAdditionally()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Cheese_sauce">Cheese sauce</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="additionally" id="Tomato_sauce"
+                                   onclick="viewImgAdditionally()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Tomato_sauce">Tomato sauce</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="additionally" id="Spicy_sauce" onclick="viewImgAdditionally()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Spicy_sauce">Spicy sauce</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="additionally" id="Mustard_sauce"
+                                   onclick="viewImgAdditionally()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Mustard_sauce">Mustard sauce</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="additionally" id="Wasabi" onclick="viewImgAdditionally()">
+                            <img src="ico/pizza-checkbox.png" alt="">
+                            <label for="Wasabi">Wasabi</label>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+            <div class="button">
+                <button onclick="reset()">reset</button>
+                <button onclick="cooking()">calculate</button>
+            </div>
+        </div>
+        <div class="result">
+            <div class="information_image">
+                <div class="information_cost" id="information_cost">Cost:</div>
+                <div class="information_calories" id="information_calories">Calories:</div>
+                <div class="img_container_block">
+                    <div class="img_dough_block">
+                        <img src="img/dough/standard.png" alt="" class="img_dough">
+                        <img src="img/dough/thin.png" alt="" class="img_dough">
+                        <img src="img/dough/thick.png" alt="" class="img_dough">
+                        <img src="img/dough/calzone.png" alt="" class="img_dough">
+                        <img src="img/dough/italian.png" alt="" class="img_dough">
+                    </div>
+                    <div class="img_components_block">
+                        <img src="img/components/cheese.png" alt="" class="img_components">
+                        <img src="img/components/bacon.png" alt="" class="img_components">
+                        <img src="img/components/tomato.png" alt="" class="img_components">
+                        <img src="img/components/paprika.png" alt="" class="img_components">
+                        <img src="img/components/corn.png" alt="" class="img_components">
+                        <img src="img/components/pineapple.png" alt="" class="img_components">
+                        <img src="img/components/olives.png" alt="" class="img_components">
+                        <img src="img/components/shrimp.png" alt="" class="img_components">
+                        <img src="img/components/mushrooms.png" alt="" class="img_components">
+                        <img src="img/components/greens.png" alt="" class="img_components">
+                    </div>
+                    <div class="img_additionally_block">
+                        <img src="img/additionally/cheese.png" alt="" class="img_additionally">
+                        <img src="img/additionally/tomato.png" alt="" class="img_additionally">
+                        <img src="img/additionally/spicy.png" alt="" class="img_additionally">
+                        <img src="img/additionally/mustard.png" alt="" class="img_additionally">
+                        <img src="img/additionally/wassabi.png" alt="" class="img_additionally">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div class="popup" id="popup">
+    <div class="popup_container">
+        <div class="popup_content" id="popup_content">
+            <div class="close_popup" onclick="closePopup()">
+                <span class="material-icons">
+                    close
+                </span>
+            </div>
+            <div class="title_popup">
+                The pizza is not formed
+            </div>
+            <div class="text_popup" id="text_popup">
+                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam debitis dolor dolore hic ipsa
+                    labore libero modi nam, necessitatibus nesciunt officia pariatur, perspiciatis quod tempora vel! Cum
+                    deserunt libero voluptates!
+                </div>
+                <div>Expedita nobis nulla quis repellat sint, veniam! Beatae corporis harum possimus quas quos.
+                    Assumenda atque distinctio eligendi ipsam iure nam neque nesciunt qui, rem temporibus totam, unde
+                    velit veniam veritatis?
+                </div>
+            </div>
+            <div class="popup_button">
+                <button onclick="closePopup()">
+                    Return to select
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
