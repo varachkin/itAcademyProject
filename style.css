@@ -448,14 +448,33 @@ h3 {
 
 .main-form label {
     width: 100%;
+    position: relative;
 }
 
 .main-form label span {
     display: inline-block;
     color: #dcdcdc;
-    width: 100%;
     padding: 7px 0;
 }
+
+#eye, #eye-off {
+    display: flex;
+    font-size: 22px;
+    position: absolute;
+    left: 93%;
+    bottom: 3px;
+    transition: 0.2s;
+}
+
+.eye:hover, .eye-off:hover {
+    cursor: pointer;
+}
+
+#eye-off {
+    display: none;
+    color: #ff4a2a;
+}
+
 
 .main-form-button-block {
     display: flex;
