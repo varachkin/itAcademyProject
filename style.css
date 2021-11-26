@@ -39,12 +39,11 @@
     }
     60% {
         left: 300px;
-
+        animation-timing-function: ease-in-out;
     }
     70% {
         transform: rotateZ(470deg);
         left: 600px;
-
     }
     80% {
         left: 300px;
@@ -448,9 +447,14 @@ h3 {
 }
 
 .main-form label {
-    color: #aaaaaa;
     width: 100%;
-    margin: 5px 0;
+}
+
+.main-form label span {
+    display: inline-block;
+    color: #dcdcdc;
+    width: 100%;
+    padding: 7px 0;
 }
 
 .main-form-button-block {
