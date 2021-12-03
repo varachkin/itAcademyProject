@@ -179,9 +179,6 @@
     height: 650px;
     width: 650px;
     margin: 0 auto;
-}
-
-.img-block {
     animation: pizzaRun 1.5s linear;
     background-image: url("img/board.png");
     background-size: cover;
@@ -192,7 +189,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 0px 18px 9px rgba(0, 0, 0, 0.8) inset;
+    box-shadow: -4px 4px 21px 11px rgba(0, 0, 0, 0.72) inset;
 }
 
 .img-block img {
@@ -297,7 +294,7 @@ button {
     font-weight: 600;
     margin: 30px 10px 10px;
     text-transform: uppercase;
-    min-width: 150px;
+    min-width: 120px;
 }
 
 button span {
@@ -377,7 +374,7 @@ h1 {
 h2 {
     display: block;
     width: 100%;
-    text-indent: 80px;
+    text-align: center;
     color: #cdcdcd;
     font-size: 28px;
     font-weight: 500;
@@ -447,7 +444,7 @@ h3 {
 }
 
 .main-form label {
-    width: 100%;
+    width: 90%;
     position: relative;
 }
 
@@ -457,7 +454,7 @@ h3 {
     padding: 7px 0;
 }
 
-#eye, #eye-off {
+span.eye, span.eye-off {
     display: flex;
     font-size: 22px;
     position: absolute;
@@ -470,7 +467,7 @@ h3 {
     cursor: pointer;
 }
 
-#eye-off {
+label span.eye-off {
     display: none;
     color: #ff4a2a;
 }
