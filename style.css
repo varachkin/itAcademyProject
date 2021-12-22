@@ -10,6 +10,7 @@
     src: url(font/MaterialIcons-Regular.ttf);
 }
 
+/*****************     Анимация пиццы   *************************/
 @keyframes pizzaRun {
     from {
         transform: rotateZ(0deg);
@@ -173,7 +174,7 @@
     }
 }
 
-/**************************************************************/
+/*****************  Блок с картинками кусков пиццы   ****************/
 .img-block {
     position: relative;
     height: 650px;
@@ -262,8 +263,74 @@
     animation-fill-mode: forwards;
 }
 
+/*******************        Попап       ***************************/
 
-/**********************************************************/
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(1, 1, 1, 0.8);
+    opacity: 1;
+    transition: 1.5s;
+    visibility: hidden;
+}
+
+.popup_container {
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    padding: 30px 10px;
+}
+
+.popup_content {
+    background-color: white;
+    box-shadow: 1px 2px 9px 7px rgba(0, 0, 0, 0.21) inset;
+    border-radius: 5px;
+    color: #2d2d2d;
+    max-width: 600px;
+    padding: 30px;
+    position: relative;
+    transition: 0.8s;
+    transform: perspective(700px) translate(0, -200%) rotateX(45deg);
+    text-align: center;
+
+}
+
+.title_popup {
+    font-size: 40px;
+    margin: 15px 0 30px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.text_popup span {
+    color: #a07637;
+    font-weight: 600;
+}
+
+.close_popup span {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.close_popup span:hover, .header-icons:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    color: #e17c02;
+}
+
+.popup_button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/****************************************************************************/
 body {
     margin: 0;
     background: linear-gradient(135deg, #32373e, #0f1316);
@@ -271,20 +338,25 @@ body {
     overflow: hidden;
 }
 
-ul {
+.block-btn {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.header__nav-list {
     list-style: none;
     padding: 0 10px;
 }
 
-.button {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-}
 
-button {
+.btn {
     font-family: Calibri, sans-serif;
-    padding: 7px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 20px;
     background: linear-gradient(#ffcd8e, #de7900);
     transition: 0.5s;
     border: none;
@@ -292,23 +364,21 @@ button {
     border-radius: 4px;
     font-size: 22px;
     font-weight: 600;
-    margin: 30px 10px 10px;
+    margin: 30px 20px 10px;
     text-transform: uppercase;
-    min-width: 120px;
 }
 
-button span {
+.btn span {
     margin: 0 12px;
     font-size: 22px;
 }
 
-button:hover {
+.btn:hover {
     cursor: pointer;
     background: linear-gradient(#edc087, #e17c02);
 }
 
 .background {
-    display: flex;
     min-height: 100vh;
     background-image: url(img/background.png);
     background-size: contain;
@@ -339,9 +409,14 @@ button:hover {
     font-feature-settings: 'liga';
 }
 
+.close {
+    font-size: 26px;
+}
+
 .header {
     display: flex;
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
     justify-content: space-between;
 }
 
@@ -353,6 +428,7 @@ button:hover {
 .header__nav-list {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .header__nav-list li {
@@ -369,6 +445,8 @@ h1 {
     font-weight: 500;
     margin: 0;
     padding: 10px 30px;
+    display: flex;
+    align-items: center;
 }
 
 h2 {
@@ -390,39 +468,6 @@ h3 {
     font-weight: 300;
 }
 
-.price-list {
-    max-width: 1200px;
-    margin: 0 auto;
-    height: 100%;
-    width: 100%;
-    background-size: contain;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 25px;
-}
-
-.price-list-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    border-radius: 7px;
-    border: 1px solid #02160B;
-    background: linear-gradient(90deg, rgba(1, 1, 1, 0.6), rgba(1, 1, 1, 0.1));
-    transition: 0.2s;
-}
-
-.price-list-card:hover {
-    box-shadow: 3px 3px 25px -7px rgba(176, 176, 176, 0.17);
-}
-
-.price-list-card img {
-    display: block;
-    width: 50%;
-}
-
-
 .main-form {
     display: flex;
     justify-content: center;
@@ -432,7 +477,7 @@ h3 {
     padding: 40px 0;
 }
 
-.main-form input {
+.main-form .input-form > input {
     display: block;
     background: rgba(1, 1, 1, 0.2);
     outline: none;
@@ -478,330 +523,52 @@ label span.eye-off {
     justify-content: space-around;
 }
 
+.page {
+    display: flex;
+    align-items: flex-start;
+    /*flex-direction: column;*/
+    justify-content: center;
+}
 
-/*.page {*/
-/*    display: flex;*/
-/*    align-items: flex-start;*/
-/*    flex-direction: column;*/
+.popup-header {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    height: 500px;
+    width: 400px;
+    background: linear-gradient(180deg, rgba(1, 1, 1, 0.9), rgba(1, 1, 1, 0.9), rgba(1, 1, 1, 0) 97%);
+    border-radius: 7px;
+    transition: 1s;
+    color: #cdcdcd;
+    padding-top: 30px;
+    transform: perspective(200px) translate(0, -100%) rotateX(45deg);
+}
 
-/*}*/
+.popup-header-title {
+    color: #a07637;
+}
 
-/*.container {*/
-/*    display: flex;*/
-/*    align-items: flex-start;*/
-/*    flex-direction: row;*/
-/*    justify-content: flex-start;*/
-/*    background: linear-gradient(90deg, rgba(1, 1, 1, 0.6), rgba(1, 1, 1, 0.1));*/
-/*    border-radius: 10px;*/
-/*    padding: 20px;*/
-/*}*/
+.popup-header-container-info {
+    list-style: none;
+    padding: 0;
+}
 
-/*label {*/
-/*    color: #cdcdcd;*/
-/*    font-size: 20px;*/
-/*    transition: 0.4s;*/
-/*}*/
+.popup-li {
+    margin: 15px 0;
+    padding: 0 26px;
+    display: flex;
+    justify-content: space-between;
+}
 
-/*label:hover, input:hover {*/
-/*    cursor: pointer;*/
-/*    color: #ffcd8e;*/
-/*}*/
+.popup-header-img {
+    text-align: center;
+}
 
-/*input {*/
-/*    position: absolute;*/
-/*    z-index: -1;*/
-/*    opacity: 0;*/
-/*}*/
+.popup-header-img img {
+    max-width: 75px;
+    margin: 18px 0 8px;
+}
 
-/*input:checked ~ label {*/
-/*    color: darkorange;*/
-/*}*/
-
-/*input:checked + img {*/
-/*    opacity: 1;*/
-/*}*/
-
-/*li img {*/
-/*    height: 18px;*/
-/*    opacity: 0;*/
-/*    transition: 0.2s;*/
-/*}*/
-
-
-/*.result {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: flex-start;*/
-/*    position: absolute;*/
-/*    bottom: 10px;*/
-/*    right: 10px;*/
-/*}*/
-
-/*.information_image {*/
-/*    width: 550px;*/
-/*    height: 550px;*/
-/*    margin: 20px;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*}*/
-
-/*.information_cost {*/
-/*    font-size: 30px;*/
-/*    color: #f3f3f3;*/
-/*    padding: 10px 20px;*/
-/*    height: 45px;*/
-/*    width: 100%;*/
-/*    font-weight: 300;*/
-/*}*/
-
-/*.information_cost span {*/
-/*    color: orange;*/
-/*    padding: 0 10px;*/
-/*    font-weight: 600;*/
-/*}*/
-
-/*.information_calories {*/
-/*    font-size: 30px;*/
-/*    color: #f3f3f3;*/
-/*    padding: 10px 20px;*/
-/*    height: 45px;*/
-/*    width: 100%;*/
-/*    font-weight: 300;*/
-/*}*/
-
-/*.information_calories span {*/
-/*    color: orange;*/
-/*    padding: 0 10px;*/
-/*    font-weight: 600;*/
-/*}*/
-
-/*.img_container_block {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    width: 550px;*/
-/*    height: 550px;*/
-/*    background-image: url(img/table.png);*/
-/*    background-size: contain;*/
-/*    background-repeat: no-repeat;*/
-/*    background-position: center center;*/
-/*    position: relative;*/
-/*}*/
-
-/*.img_container_block div {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    position: absolute;*/
-/*    width: 260px;*/
-/*    height: 260px;*/
-/*}*/
-
-/*.img_dough {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    position: absolute;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    border-radius: 50%;*/
-/*    box-shadow: 10px 7px 16px -10px rgba(0, 0, 0, 0.75);*/
-/*    opacity: 0;*/
-/*    transition: 1s;*/
-/*}*/
-
-/*.img_components {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    position: absolute;*/
-/*    opacity: 0;*/
-/*    transition: 1s;*/
-/*}*/
-
-/*.img_components {*/
-/*    width: 87%;*/
-/*    height: 87%;*/
-/*}*/
-
-/*.img_additionally_block {*/
-/*    position: absolute;*/
-/*    top: 70px;*/
-/*    right: 0;*/
-/*    transition: 0.5s;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    max-width: 100px;*/
-/*}*/
-
-/*.img_additionally_block img {*/
-/*    width: 100px;*/
-/*    opacity: 0;*/
-/*}*/
-
-/*.popup {*/
-/*    position: fixed;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    background-color: rgba(1, 1, 1, 0.8);*/
-/*    opacity: 0;*/
-/*    visibility: hidden;*/
-/*    transition: 1s;*/
-/*}*/
-
-/*.popup_container {*/
-/*    min-height: 100%;*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    font-family: sans-serif;*/
-/*    padding: 30px 10px;*/
-/*}*/
-
-/*.popup_content {*/
-/*    background-color: white;*/
-/*    box-shadow: 1px 2px 9px 7px rgba(0, 0, 0, 0.21) inset;*/
-/*    border-radius: 5px;*/
-/*    color: #2d2d2d;*/
-/*    max-width: 600px;*/
-/*    padding: 30px;*/
-/*    position: relative;*/
-/*    transition: 0.8s;*/
-/*    transform: perspective(700px) translate(0, -200%) rotateX(45deg);*/
-/*    text-align: center;*/
-/*}*/
-
-/*.title_popup {*/
-/*    font-size: 40px;*/
-/*    margin: 15px 0 30px;*/
-/*    font-weight: 600;*/
-/*    text-align: center;*/
-/*}*/
-
-/*.text_popup span {*/
-/*    color: #a07637;*/
-/*    font-weight: 600;*/
-/*}*/
-
-/*.close_popup span {*/
-/*    position: absolute;*/
-/*    top: 10px;*/
-/*    right: 10px;*/
-/*}*/
-
-/*.close_popup span:hover {*/
-/*    cursor: pointer;*/
-/*    transition: 0.3s;*/
-/*    color: #e17c02;*/
-/*}*/
-
-/*.popup_button {*/
-/*    width: 100%;*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*}*/
-
-/*@media (max-width: 1400px) {*/
-/*    .information_image {*/
-/*        flex-direction: column;*/
-/*        width: 100%;*/
-/*        height: 450px;*/
-/*        text-align: center;*/
-/*    }*/
-
-/*    .result {*/
-/*        position: relative;*/
-/*    }*/
-
-/*    .img_container_block {*/
-/*        height: 450px;*/
-/*    }*/
-
-/*    .wrapper {*/
-/*        flex-direction: column;*/
-/*        align-items: center;*/
-/*        background-image: none;*/
-/*    }*/
-
-/*    h1 {*/
-/*        font-size: 90px;*/
-/*    }*/
-
-/*    h2 {*/
-/*        font-size: 75px;*/
-/*    }*/
-
-/*    .information_image {*/
-/*        height: 100px;*/
-/*    }*/
-
-/*    .img_container_block {*/
-/*        display: none;*/
-/*    }*/
-
-/*    main {*/
-/*        align-items: center;*/
-/*    }*/
-/*}*/
-
-/*@media (max-width: 840px) {*/
-/*    main {*/
-/*        justify-content: flex-start;*/
-/*    }*/
-
-/*    h1 {*/
-/*        font-size: 65px;*/
-/*        text-align: end;*/
-/*    }*/
-
-/*    h2 {*/
-/*        font-size: 45px;*/
-/*        text-align: end;*/
-/*    }*/
-
-/*    h3 {*/
-/*        font-size: 16px;*/
-/*    }*/
-
-/*    label {*/
-/*        font-size: 14px;*/
-/*    }*/
-
-/*    .wrapper {*/
-/*        min-width: 600px;*/
-/*    }*/
-
-/*    li img {*/
-/*        height: 12px;*/
-/*    }*/
-
-/*    .title {*/
-/*        display: inline-flex;*/
-/*        flex-direction: column;*/
-/*        align-items: flex-end;*/
-/*        font-size: 16px;*/
-/*    }*/
-
-/*    .information_cost, .information_calories {*/
-/*        font-size: 22px;*/
-/*    }*/
-
-/*    .information_calories span, .information_cost span {*/
-/*        font-size: 30px;*/
-/*    }*/
-/*}*/
-
-/*@media (max-width: 600px) {*/
-/*    .container {*/
-/*        flex-direction: column;*/
-/*    }*/
-
-/*    h1 {*/
-/*        font-size: 44px;*/
-/*        text-align: end;*/
-/*    }*/
-/*}*/
+.popup-header-container-info li span:first-child {
+    color: #de7900;
+}
