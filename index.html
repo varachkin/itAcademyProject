@@ -10,260 +10,229 @@
     <link rel="stylesheet" href="form-style.css">
     <link rel="icon" href="ico/favicon.png">
 
-    <script defer src="script/Objects.js"></script>
-    <script defer src="script/script.js"></script>
-    <script defer src="script/animation-start.js"></script>
-    <script defer src="script/functions.js"></script>
+    <!--    <script defer src="script/Objects.js"></script>-->
+    <script src="script/app.js" type="module"></script>
+    <!--    <script defer src="script/script.js"></script>-->
+    <!--    <script defer src="script/animation-start.js"></script>-->
+    <!--    <script defer src="script/functions.js"></script>-->
 </head>
 <body>
-<div class="background">
-    <div class="header">
-        <h1>Pizza shop</h1>
-        <nav class="header__nav">
-            <ul class="header__nav-list">
-                <li>
-                    <span class="material-icons header-icons" onclick="showHeader('person')">person</span>
-                </li>
-                <li>
-                    <span class="material-icons header-icons" onclick="showHeader('basket')">shopping_cart</span>
-                </li>
-            </ul>
-            <div class="popup-header" id="popup-header">
-                <div class="close_popup" onclick="closeHeader()">
-                <span class="material-icons close">
-                    close
-                </span>
-                </div>
-                <h2 class="popup-header-title">Мой ПопАп</h2>
-                <div class="popup-header-img">
-                    <img src="img/header-person.png" alt="">
-                </div>
-                <ul class="popup-header-container-info">
-                    <li class="popup-li"><span class="">First name:</span><span>UNKNOWN</span></li>
-                    <li class="popup-li"><span>Last name:</span><span>UNKNOWN</span></li>
-                    <li class="popup-li"><span>E-mail:</span><span>UNKNOWN</span></li>
-                    <li class="popup-li"><span>Login:</span><span>UNKNOWN</span></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <main class="main">
-        <!--        <div class="wrapper">-->
-        <!--            <div class="page">-->
-        <!--                <div class="img-block">-->
-        <!--                    <h2>Login form</h2>-->
-        <!--                    <form action="" class="main-form">-->
-        <!--                        <label class="input-form"><span>Email</span><input type="email"></label>-->
-        <!--                        <label class="input-form">-->
-        <!--                            <span>Password</span>-->
-        <!--                            <input type="password" id="password">-->
-        <!--                            <span class="material-icons eye" id="eye" onclick="showEye()">visibility</span>-->
-        <!--                            <span class="material-icons eye-off" id="eye-off"-->
-        <!--                                  onclick="showEye()">visibility_off</span>-->
-        <!--                        </label>-->
-        <!--                        <div class="main-form-button-block">-->
-        <!--                            <div class="btn" onclick="createInputForm()">Register</div>-->
-        <!--                            <div class="btn">Sign in</div>-->
-        <!--                        </div>-->
-        <!--                    </form>-->
-        <!--                    <img id="img-1" src="img/startpizza/1.png" alt="">-->
-        <!--                    <img id="img-2" src="img/startpizza/2.png" alt="">-->
-        <!--                    <img id="img-3" src="img/startpizza/3.png" alt="">-->
-        <!--                    <img id="img-4" src="img/startpizza/4.png" alt="">-->
-        <!--                    <img id="img-5" src="img/startpizza/5.png" alt="">-->
-        <!--                    <img id="img-6" src="img/startpizza/6.png" alt="">-->
-        <!--                    <img id="img-7" src="img/startpizza/7.png" alt="">-->
-        <!--                    <img id="img-8" src="img/startpizza/8.png" alt="">-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <div class="container">
-            <div class="container__form">
-                <form action="" class="form">
-                    <h3>Dough</h3>
-                    <ul>
-                        <li>
-                            <input type="radio" id="Standard" name="dough" onclick="viewImgDough()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Standard" id="st">Standard</label>
-                        </li>
-                        <li>
-                            <input type="radio" id="Thin" name="dough" onclick="viewImgDough()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Thin">Thin</label>
-                        </li>
-                        <li>
-                            <input type="radio" id="Thick" name="dough" onclick="viewImgDough()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Thick">Thick</label>
-                        </li>
-                        <li>
-                            <input type="radio" id="Calzone" name="dough" onclick="viewImgDough()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Calzone">Calzone</label>
-                        </li>
-                        <li>
-                            <input type="radio" id="Italian" name="dough" onclick="viewImgDough()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Italian">Italian</label>
-                        </li>
-                    </ul>
-                </form>
-                <form action="" class="form">
-                    <h3>Size</h3>
-                    <ul>
-                        <li>
-                            <input type="radio" id="Size_32" name="size" onclick="viewImgSize(32)">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Size_32">Size 32 cm</label>
-                        </li>
-                        <li>
-                            <input type="radio" id="Size_40" name="size" onclick="viewImgSize(40)">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Size_40">Size 40 cm</label>
-                        </li>
-                        <li>
-                            <input type="radio" id="Size_45" name="size" onclick="viewImgSize(45)">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Size_45">Size 45 cm</label>
-                        </li>
-                    </ul>
-                </form>
-                <form action="" class="form">
-                    <h3>Components</h3>
-                    <ul>
-                        <li>
-                            <input type="checkbox" name="components" id="Cheese" onclick="viewImgComponents()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Cheese">Cheese</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="components" id="Bacon" onclick="viewImgComponents()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Bacon">Bacon</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="components" id="Tomato" onclick="viewImgComponents()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Tomato">Tomato</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="components" id="Paprika" onclick="viewImgComponents()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Paprika">Paprika</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="components" id="Corn" onclick="viewImgComponents()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Corn">Corn</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="components" id="Pineapple" onclick="viewImgComponents()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Pineapple">Pineapple</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="components" id="Olives" onclick="viewImgComponents()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Olives">Olives</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="components" id="Shrimp" onclick="viewImgComponents()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Shrimp">Shrimp</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="components" id="Mushrooms" onclick="viewImgComponents()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Mushrooms">Mushrooms</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="components" id="Greens" onclick="viewImgComponents()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Greens">Greens</label>
-                        </li>
-                    </ul>
-                </form>
-                <form action="" class="form">
-                    <h3>Additionally</h3>
-                    <ul>
-                        <li>
-                            <input type="checkbox" name="additionally" id="Cheese_sauce"
-                                   onclick="viewImgAdditionally()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Cheese_sauce">Cheese sauce</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="additionally" id="Tomato_sauce"
-                                   onclick="viewImgAdditionally()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Tomato_sauce">Tomato sauce</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="additionally" id="Spicy_sauce" onclick="viewImgAdditionally()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Spicy_sauce">Spicy sauce</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="additionally" id="Mustard_sauce"
-                                   onclick="viewImgAdditionally()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Mustard_sauce">Mustard sauce</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="additionally" id="Wasabi" onclick="viewImgAdditionally()">
-                            <img src="ico/pizza-checkbox.png" alt="">
-                            <label for="Wasabi">Wasabi</label>
-                        </li>
-                    </ul>
-                </form>
-            </div>
+<div class="root" id="root">
+    <!--        <div class="wrapper">-->
+    <!--            <div class="page">-->
+    <!--                <div class="img-block">-->
+    <!--                    <h2>Login form</h2>-->
+    <!--                    <form action="" class="main-form">-->
+    <!--                        <label class="input-form"><span>Email</span><input type="email"></label>-->
+    <!--                        <label class="input-form">-->
+    <!--                            <span>Password</span>-->
+    <!--                            <input type="password" id="password">-->
+    <!--                            <span class="material-icons eye" id="eye" onclick="showEye()">visibility</span>-->
+    <!--                            <span class="material-icons eye-off" id="eye-off"-->
+    <!--                                  onclick="showEye()">visibility_off</span>-->
+    <!--                        </label>-->
+    <!--                        <div class="main-form-button-block">-->
+    <!--                            <div class="btn" onclick="createInputForm()">Register</div>-->
+    <!--                            <div class="btn">Sign in</div>-->
+    <!--                        </div>-->
+    <!--                    </form>-->
+    <!--                    <img id="img-1" src="img/startpizza/1.png" alt="">-->
+    <!--                    <img id="img-2" src="img/startpizza/2.png" alt="">-->
+    <!--                    <img id="img-3" src="img/startpizza/3.png" alt="">-->
+    <!--                    <img id="img-4" src="img/startpizza/4.png" alt="">-->
+    <!--                    <img id="img-5" src="img/startpizza/5.png" alt="">-->
+    <!--                    <img id="img-6" src="img/startpizza/6.png" alt="">-->
+    <!--                    <img id="img-7" src="img/startpizza/7.png" alt="">-->
+    <!--                    <img id="img-8" src="img/startpizza/8.png" alt="">-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    <div class="container">-->
+    <!--        <div class="container__form">-->
+    <!--            <form action="" class="form">-->
+    <!--                <h3>Dough</h3>-->
+    <!--                <ul>-->
+    <!--                    <li id="d1">-->
+    <!--                        <input type="radio" class="dough" id="Standard" name="dough" onclick="viewImgDough()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Standard">Standard</label>-->
+    <!--                    </li>-->
+    <!--                    <li id="d2">-->
+    <!--                        <input type="radio" id="Thin" name="dough" onclick="viewImgDough()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Thin">Thin</label>-->
+    <!--                    </li>-->
+    <!--                    <li id="d3">-->
+    <!--                        <input type="radio" id="Thick" name="dough" onclick="viewImgDough()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Thick">Thick</label>-->
+    <!--                    </li>-->
+    <!--                    <li id="d4">-->
+    <!--                        <input type="radio" id="Calzone" name="dough" onclick="viewImgDough()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Calzone">Calzone</label>-->
+    <!--                    </li>-->
+    <!--                    <li id="d5">-->
+    <!--                        <input type="radio" id="Italian" name="dough" onclick="viewImgDough()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Italian">Italian</label>-->
+    <!--                    </li>-->
+    <!--                </ul>-->
+    <!--            </form>-->
+    <!--            <form action="" class="form">-->
+    <!--                <h3>Size</h3>-->
+    <!--                <ul>-->
+    <!--                    <li>-->
+    <!--                        <input type="radio" id="Size_32" name="size" onclick="viewImgSize(32)">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Size_32">Size 32 cm</label>-->
+    <!--                    </li>-->
+    <!--                    <li>-->
+    <!--                        <input type="radio" id="Size_40" name="size" onclick="viewImgSize(40)">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Size_40">Size 40 cm</label>-->
+    <!--                    </li>-->
+    <!--                    <li>-->
+    <!--                        <input type="radio" id="Size_45" name="size" onclick="viewImgSize(45)">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Size_45">Size 45 cm</label>-->
+    <!--                    </li>-->
+    <!--                </ul>-->
+    <!--            </form>-->
+    <!--            <form action="" class="form">-->
+    <!--                <h3>Components</h3>-->
+    <!--                <ul>-->
+    <!--                    <li>-->
+    <!--                        <input type="checkbox" name="components" id="Cheese" onclick="viewImgComponents()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Cheese">Cheese</label>-->
+    <!--                    </li>-->
+    <!--                    <li>-->
+    <!--                        <input type="checkbox" name="components" id="Bacon" onclick="viewImgComponents()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Bacon">Bacon</label>-->
+    <!--                    </li>-->
+    <!--                    <li>-->
+    <!--                        <input type="checkbox" name="components" id="Tomato" onclick="viewImgComponents()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Tomato">Tomato</label>-->
+    <!--                    </li>-->
+    <!--                    <li>-->
+    <!--                        <input type="checkbox" name="components" id="Paprika" onclick="viewImgComponents()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Paprika">Paprika</label>-->
+    <!--                    </li>-->
+    <!--                    <li>-->
+    <!--                        <input type="checkbox" name="components" id="Corn" onclick="viewImgComponents()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Corn">Corn</label>-->
+    <!--                    </li>-->
+    <!--                    <li>-->
+    <!--                        <input type="checkbox" name="components" id="Pineapple" onclick="viewImgComponents()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Pineapple">Pineapple</label>-->
+    <!--                    </li>-->
+    <!--                    <li>-->
+    <!--                        <input type="checkbox" name="components" id="Olives" onclick="viewImgComponents()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Olives">Olives</label>-->
+    <!--                    </li>-->
+    <!--                    <li>-->
+    <!--                        <input type="checkbox" name="components" id="Shrimp" onclick="viewImgComponents()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Shrimp">Shrimp</label>-->
+    <!--                    </li>-->
+    <!--                    <li>-->
+    <!--                        <input type="checkbox" name="components" id="Mushrooms" onclick="viewImgComponents()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Mushrooms">Mushrooms</label>-->
+    <!--                    </li>-->
+    <!--                    <li>-->
+    <!--                        <input type="checkbox" name="components" id="Greens" onclick="viewImgComponents()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Greens">Greens</label>-->
+    <!--                    </li>-->
+    <!--                </ul>-->
+    <!--            </form>-->
+    <!--            <form action="" class="form">-->
+    <!--                <h3>Additionally</h3>-->
+    <!--                <ul>-->
+    <!--                    <li>-->
+    <!--                        <input type="checkbox" name="additionally" id="Cheese_sauce"-->
+    <!--                               onclick="viewImgAdditionally()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Cheese_sauce">Cheese sauce</label>-->
+    <!--                    </li>-->
+    <!--                    <li>-->
+    <!--                        <input type="checkbox" name="additionally" id="Tomato_sauce"-->
+    <!--                               onclick="viewImgAdditionally()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Tomato_sauce">Tomato sauce</label>-->
+    <!--                    </li>-->
+    <!--                    <li>-->
+    <!--                        <input type="checkbox" name="additionally" id="Spicy_sauce" onclick="viewImgAdditionally()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Spicy_sauce">Spicy sauce</label>-->
+    <!--                    </li>-->
+    <!--                    <li>-->
+    <!--                        <input type="checkbox" name="additionally" id="Mustard_sauce"-->
+    <!--                               onclick="viewImgAdditionally()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Mustard_sauce">Mustard sauce</label>-->
+    <!--                    </li>-->
+    <!--                    <li>-->
+    <!--                        <input type="checkbox" name="additionally" id="Wasabi" onclick="viewImgAdditionally()">-->
+    <!--                        <img src="ico/pizza-checkbox.png" alt="">-->
+    <!--                        <label for="Wasabi">Wasabi</label>-->
+    <!--                    </li>-->
+    <!--                </ul>-->
+    <!--            </form>-->
+    <!--        </div>-->
 
-            <div class="result">
-                <div class="information_image">
-                    <div class="img_container_block">
-                        <div class="img_dough_block">
-                            <img src="img/dough/standard.png" alt="" class="img_dough">
-                            <img src="img/dough/thin.png" alt="" class="img_dough">
-                            <img src="img/dough/thick.png" alt="" class="img_dough">
-                            <img src="img/dough/calzone.png" alt="" class="img_dough">
-                            <img src="img/dough/italian.png" alt="" class="img_dough">
-                        </div>
-                        <div class="img_components_block">
-                            <img src="img/components/cheese.png" alt="" class="img_components">
-                            <img src="img/components/bacon.png" alt="" class="img_components">
-                            <img src="img/components/tomato.png" alt="" class="img_components">
-                            <img src="img/components/paprika.png" alt="" class="img_components">
-                            <img src="img/components/corn.png" alt="" class="img_components">
-                            <img src="img/components/pineapple.png" alt="" class="img_components">
-                            <img src="img/components/olives.png" alt="" class="img_components">
-                            <img src="img/components/shrimp.png" alt="" class="img_components">
-                            <img src="img/components/mushrooms.png" alt="" class="img_components">
-                            <img src="img/components/greens.png" alt="" class="img_components">
-                        </div>
-                        <div class="img_additionally_block">
-                            <img src="img/additionally/cheese.png" alt="" class="img_additionally">
-                            <img src="img/additionally/tomato.png" alt="" class="img_additionally">
-                            <img src="img/additionally/spicy.png" alt="" class="img_additionally">
-                            <img src="img/additionally/mustard.png" alt="" class="img_additionally">
-                            <img src="img/additionally/wassabi.png" alt="" class="img_additionally">
-                        </div>
-                    </div>
-                </div>
-                <div class="block-btn">
-                    <div class="result-info">
-                        <div class="information_cost" id="information_cost">Cost:</div>
-                        <div class="information_calories" id="information_calories">Calories:</div>
-                        <div class="block-btn">
-                            <div class="btn" onclick="reset()">reset</div>
-                            <div class="btn" onclick="cooking()">calculate</div>
-                            <div class="btn" onclick="">to basket</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+    <!--        <div class="result">-->
+    <!--            <div class="information_image">-->
+    <!--                <div class="img_container_block">-->
+    <!--                    <div class="img_dough_block">-->
+    <!--                        <img src="img/dough/standard.png" alt="" class="img_dough">-->
+    <!--                        <img src="img/dough/thin.png" alt="" class="img_dough">-->
+    <!--                        <img src="img/dough/thick.png" alt="" class="img_dough">-->
+    <!--                        <img src="img/dough/calzone.png" alt="" class="img_dough">-->
+    <!--                        <img src="img/dough/italian.png" alt="" class="img_dough">-->
+    <!--                    </div>-->
+    <!--                    <div class="img_components_block">-->
+    <!--                        <img src="img/components/cheese.png" alt="" class="img_components">-->
+    <!--                        <img src="img/components/bacon.png" alt="" class="img_components">-->
+    <!--                        <img src="img/components/tomato.png" alt="" class="img_components">-->
+    <!--                        <img src="img/components/paprika.png" alt="" class="img_components">-->
+    <!--                        <img src="img/components/corn.png" alt="" class="img_components">-->
+    <!--                        <img src="img/components/pineapple.png" alt="" class="img_components">-->
+    <!--                        <img src="img/components/olives.png" alt="" class="img_components">-->
+    <!--                        <img src="img/components/shrimp.png" alt="" class="img_components">-->
+    <!--                        <img src="img/components/mushrooms.png" alt="" class="img_components">-->
+    <!--                        <img src="img/components/greens.png" alt="" class="img_components">-->
+    <!--                    </div>-->
+    <!--                    <div class="img_additionally_block">-->
+    <!--                        <img src="img/additionally/cheese.png" alt="" class="img_additionally">-->
+    <!--                        <img src="img/additionally/tomato.png" alt="" class="img_additionally">-->
+    <!--                        <img src="img/additionally/spicy.png" alt="" class="img_additionally">-->
+    <!--                        <img src="img/additionally/mustard.png" alt="" class="img_additionally">-->
+    <!--                        <img src="img/additionally/wassabi.png" alt="" class="img_additionally">-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--            <div class="block-btn">-->
+    <!--                <div class="result-info">-->
+    <!--                    <div class="information_cost" id="information_cost">Cost:</div>-->
+    <!--                    <div class="information_calories" id="information_calories">Calories:</div>-->
+    <!--                    <div class="block-btn">-->
+    <!--                        <div class="btn" onclick="reset()">reset</div>-->
+    <!--                        <div class="btn" onclick="cooking()">calculate</div>-->
+    <!--                        <div class="btn" onclick="">to basket</div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
 </div>
 <div class="popup" id="popup">
     <div class="popup_container">

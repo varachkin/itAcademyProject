@@ -46,10 +46,18 @@ li input:checked + img {
     opacity: 1;
 }
 
+li {
+    position: relative;
+    z-index: 0;
+}
+
 li img {
     height: 18px;
     opacity: 0;
     transition: 0.2s;
+    position: absolute;
+    left: -27px;
+    top: 5px;
 }
 
 

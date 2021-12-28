@@ -1,6 +1,7 @@
-'use strict';
+// import {createElementDom} from "./func";
+// import {buildHeader} from "./DOM";
 
-let doughEl = document.getElementsByName("dough");
+let doughEl = document.querySelectorAll("input[name='dough']");
 let sizeEl = document.getElementsByName("size");
 let componentsEl = document.getElementsByName("components");
 let additionallyEl = document.getElementsByName("additionally");
@@ -23,7 +24,7 @@ let finalCostPizza;
 
 
 //   Функция заполнения объекта свойствами готовой пиццы
-function cooking() {
+export function cooking() {
     costPizza = 0;
     caloriesPizza = 0;
     pizzaObj.DoughObj.cost = pizzaObj.DoughObj.calories = pizzaObj.SizeObj.cost = pizzaObj.SizeObj.calories = pizzaObj.ComponentsObj.cost = pizzaObj.ComponentsObj.calories = pizzaObj.AdditionallyObj.cost = pizzaObj.AdditionallyObj.calories = 0;
@@ -130,19 +131,6 @@ function cooking() {
     num_components = 0;
 }
 
-//   Функция отображения предупреждения
-function viewPopup() {
-    popup.style.opacity = '1';
-    popup.style.visibility = 'visible';
-    popupContent.style.transform = 'perspective(600px) translate(0, 0) rotateX(0)';
-}
-
-//   Функция закрытия предупреждения
-function closePopup() {
-    popup.style.opacity = '0';
-    popup.style.visibility = 'hidden';
-    popupContent.style.transform = 'perspective(600px) translate(0, -200%) rotateX(45deg)';
-}
 
 //   Функция расчитывающая стоимость пиццы.
 function cost(num) {
@@ -212,43 +200,27 @@ function cost(num) {
     return finalCostPizza;
 }
 
+// *************    Отображение иконки чекбокса   ***********************
+
+function showCheckboxIco(el) {
+
+
+    el.after(document.createElement('div'))
+}
+
 //   Функция отображения теста
-function viewImgDough(x) {
-    // const blockDough = document.querySelector('.img_dough_block');
-    // blockDough.firstChild.remove();
-    // const img = blockDough.appendChild(document.createElement('img'));
-    // img.classList.add('img_dough');
-    // switch (x) {
-    //     case 1:
-    //         img.src = "img/dough/standard.png";
-    //         break;
-    //     case 2:
-    //         img.src = "img/dough/calzone.png";
-    //         break;
-    //     case 3:
-    //         img.src = "img/dough/calzone.png";
-    //         break;
-    //     case 4:
-    //         img.src = "img/dough/calzone.png";
-    //         break;
-    //     case 5:
-    //         img.src = "img/dough/calzone.png";
-    //         break;
-    // }
-    // img.style.transition = 1 + 's';
-    // img.style.opacity = '1';
-    for (let i = 0; i < doughEl.length; i++) {
+
+function viewImgDough() {
+    console.log(doughEl);
+    for (let i = 0; i < Array.from(doughEl).length; i++) {
         if (doughEl[i].checked) {
             document.querySelectorAll('.img_dough_block img')[i].style.opacity = "1";
+            // showCheckboxIco(doughEl[i]);
         } else {
             document.querySelectorAll('.img_dough_block img')[i].style.opacity = "0";
         }
     }
 }
-
-document.querySelector('#st').addEventListener('click', () => {
-    viewImgDough(2)
-});
 
 
 //   Функция отображения размера пиццы
@@ -316,8 +288,8 @@ function viewImgAdditionally() {
     }
 }
 
-//   Функция сброса
-function reset() {
+// *******************  Функция обнуления всех форм  *******************************//
+export function reset() {
     for (let i = 0; i < doughEl.length; i++) {
         doughEl[i].checked = false;
     }
@@ -340,5 +312,4 @@ function reset() {
 
     num_components = 0;
 }
-
 

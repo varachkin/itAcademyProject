@@ -1,5 +1,3 @@
-'use strict';
-
 const password = document.querySelector('#password');
 
 function showEye() {
@@ -29,7 +27,8 @@ function createInputForm(x) {
     form.insertBefore(confPass, btnBlock);
 }
 
-function showHeader(item) {
+//***************   Функция открытия меню  хедера  ***************************
+export function showHeader(item) {
     const popup = document.querySelector('#popup-header');
     const titlePopup = document.querySelector('.popup-header-title');
     switch (item) {
@@ -56,7 +55,22 @@ function showHeader(item) {
     popup.style.transform = 'perspective(500px) translate(0, 0) rotateX(0)';
 }
 
-function closeHeader() {
+//***************   Функция закрытия меню  хедера  ***************************
+export function closeHeader() {
     const popup = document.querySelector('#popup-header');
     popup.style.transform = 'perspective(200px) translate(0, -100%) rotateX(45deg)'
+}
+
+//  *************     Функция отображения предупреждения     *****************
+function viewPopup() {
+    popup.style.opacity = '1';
+    popup.style.visibility = 'visible';
+    popupContent.style.transform = 'perspective(600px) translate(0, 0) rotateX(0)';
+}
+
+// **************      Функция закрытия предупреждения    *********************
+function closePopup() {
+    popup.style.opacity = '0';
+    popup.style.visibility = 'hidden';
+    popupContent.style.transform = 'perspective(600px) translate(0, -230%) rotateX(45deg)';
 }

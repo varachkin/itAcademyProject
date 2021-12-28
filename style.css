@@ -272,8 +272,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(1, 1, 1, 0.8);
-    opacity: 1;
-    transition: 1.5s;
+    transition: 1s;
     visibility: hidden;
 }
 
@@ -297,7 +296,6 @@
     transition: 0.8s;
     transform: perspective(700px) translate(0, -200%) rotateX(45deg);
     text-align: center;
-
 }
 
 .title_popup {
@@ -335,7 +333,7 @@ body {
     margin: 0;
     background: linear-gradient(135deg, #32373e, #0f1316);
     font-family: Righteous, sans-serif;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .block-btn {
@@ -378,7 +376,7 @@ body {
     background: linear-gradient(#edc087, #e17c02);
 }
 
-.background {
+.root {
     min-height: 100vh;
     background-image: url(img/background.png);
     background-size: contain;
@@ -532,6 +530,7 @@ label span.eye-off {
 
 .popup-header {
     position: fixed;
+    z-index: 3;
     top: 0px;
     right: 0px;
     height: 500px;
