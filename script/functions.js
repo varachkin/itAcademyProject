@@ -1,19 +1,3 @@
-const password = document.querySelector('#password');
-
-function showEye() {
-    const eye = document.querySelector('.eye');
-    const eyeOff = document.querySelector('.eye-off');
-    if (eye.style.display === 'none') {
-        eyeOff.style.display = 'none';
-        eye.style.display = 'inline';
-        password.type = 'password';
-    } else {
-        eye.style.display = 'none';
-        eyeOff.style.display = 'inline';
-        password.type = 'text';
-    }
-}
-
 function createInputForm(x) {
     const form = document.querySelector('.main-form');
     const confPass = document.createElement('label');

@@ -1,5 +1,5 @@
-// Добавляет классы
-function addClassInArr() {
+// *******************  Функция анимации пиццы при появлении формы логина  *****************//
+export function animationPizza() {
     const pizzaPiece = document.querySelectorAll('div.img-block > img');
     const body = document.querySelector('body');
     for (let i = 0; i < pizzaPiece.length; i++) {
@@ -10,10 +10,8 @@ function addClassInArr() {
         for (let i = 0; i < pizzaPiece.length; i++) {
             pizzaPiece[i].style.display = 'none';
         }
-    }, 2000);
+    }, 2800);
     setTimeout(function () {
         body.style.overflow = 'auto';
-    }, 2300);
+    }, 3000);
 }
-
-setTimeout(addClassInArr, 2000);

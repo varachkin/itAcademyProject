@@ -92,11 +92,13 @@ export function buildForm(arr, title) {
         ulForm.append(li);
     }
 
-    for (let i = 0; i < ulForm.children.length; i++) {
+    for (let i = 0; i < Array.from(ulForm.children).length; i++) {
         if (title === 'dough' || title === 'size') {
-            ulForm.children[i].appendChild(createInput('radio', title, arr[i], arr[i]));
+            const input = createInput('radio', title, arr[i], arr[i]);
+            ulForm.children[i].appendChild(input);
         } else {
-            ulForm.children[i].appendChild(createInput('checkbox', title, arr[i], arr[i]));
+            const input = createInput('checkbox', title, arr[i], arr[i]);
+            ulForm.children[i].appendChild(input);
         }
 
     }
@@ -132,13 +134,8 @@ export function buildResultBlock() {
     const imgDough = createElementDom('div', 'img_dough_block');
     const imgComponents = createElementDom('div', 'img_dough_block');
     const imgSouse = createElementDom('div', 'img_dough_block');
-    resultBlock.append(imageBlockContainer);
-    imageBlockContainer.append(imageBlock);
-    imageBlock.append(imgDough, imgComponents, imgSouse);
     const infoBlock = createElementDom('div', 'block-btn');
-    resultBlock.append(infoBlock);
     const resultInfoBlock = createElementDom('div', 'result-info');
-    infoBlock.append(resultInfoBlock);
     const cost = createElementDom('div', 'information_cost');
     cost.setAttribute('id', 'information_cost');
     cost.textContent = 'Cost';
@@ -154,6 +151,11 @@ export function buildResultBlock() {
     calculateBtn.addEventListener('click', cooking);
     const toBasketBtn = createElementDom('div', 'btn');
     toBasketBtn.textContent = 'to basket';
+    resultBlock.append(imageBlockContainer);
+    imageBlockContainer.append(imageBlock);
+    imageBlock.append(imgDough, imgComponents, imgSouse);
+    resultBlock.append(infoBlock);
+    infoBlock.append(resultInfoBlock);
     btnBlock.append(resetBtn, calculateBtn, toBasketBtn);
     resultInfoBlock.append(cost, calories, btnBlock);
 
