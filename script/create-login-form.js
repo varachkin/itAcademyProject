@@ -1,4 +1,5 @@
 import {createElementDom} from "./create-form.js";
+import {animationPizza} from "./animation-start.js";
 
 const form = createElementDom('form', 'main-form');
 
@@ -6,6 +7,7 @@ const form = createElementDom('form', 'main-form');
 export function createLoginForm() {
     const wrapper = createElementDom('div', 'wrapper');
     const page = createElementDom('div', 'page');
+    page.addEventListener('click', animationPizza);
     wrapper.append(page);
     const imgBlock = createElementDom('div', 'img-block');
     page.append(imgBlock);
@@ -21,6 +23,8 @@ export function createLoginForm() {
     eyeOpenPass.classList.add('material-icons');
     eyeOpenPass.textContent = 'visibility';
     eyeOffPass.setAttribute('id', 'eye-off');
+    eyeOpenPass.addEventListener('click', showEye);
+    eyeOffPass.addEventListener('click', showEye);
     const labelEmail = createLabel('input-form', 'email', 'email');
     labelEmail.setAttribute('id', 'email');
     const labelPass = createLabel('input-form', 'password', 'password', [eyeOpenPass, eyeOffPass]);
@@ -46,20 +50,26 @@ export function createLoginForm() {
 
 // *******************  Функция создания формы регистрации  **********************************//
 function showRegistration() {
-    const eyeOpenConfPass = createElementDom('span', 'eye');
-    const eyeOffConfPass = createElementDom('span', 'eye-off');
-    eyeOpenConfPass.classList.add('material-icons');
-    eyeOpenConfPass.textContent = 'visibility';
-    eyeOffConfPass.classList.add('material-icons');
-    eyeOffConfPass.textContent = 'visibility_off';
-    const firstName = createLabel('input-form', 'text', 'first name');
-    firstName.setAttribute('id', 'first-name');
-    const lastName = createLabel('input-form', 'text', 'last name');
-    lastName.setAttribute('id', 'last-name');
-    const confPass = createLabel('input-form', 'password', 'confirm password', [eyeOpenConfPass, eyeOffConfPass]);
-    confPass.setAttribute('id', 'conf-password');
-    form.prepend(lastName, firstName);
-    form.append(confPass);
+    const arr = document.querySelectorAll('.input-form');
+    if (arr.length < 3) {
+        const eyeOpenConfPass = createElementDom('span', 'eye');
+        const eyeOffConfPass = createElementDom('span', 'eye-off');
+        eyeOpenConfPass.classList.add('material-icons');
+        eyeOpenConfPass.textContent = 'visibility';
+        eyeOffConfPass.classList.add('material-icons');
+        eyeOffConfPass.textContent = 'visibility_off';
+        eyeOpenConfPass.addEventListener('click', showEye);
+        eyeOffConfPass.addEventListener('click', showEye);
+        const firstName = createLabel('input-form', 'text', 'first name');
+        firstName.setAttribute('id', 'first-name');
+        const lastName = createLabel('input-form', 'text', 'last name');
+        lastName.setAttribute('id', 'last-name');
+        const confPass = createLabel('input-form', 'password', 'confirm password', [eyeOpenConfPass, eyeOffConfPass]);
+        confPass.setAttribute('id', 'conf-password');
+        form.prepend(lastName, firstName);
+        form.append(confPass);
+    }
+
 }
 
 // *******************  Функция создания label для формы логина  *****************************//
@@ -80,19 +90,22 @@ function createLabel(className, type, text, arr) {
 }
 
 // *******************  Функция отображения пароля в поле пароль  ****************************//
-// const password = document.querySelector('#password');
 
-export function showEye(eye, eyeOff) {
+export function showEye() {
+    let eye = this;
 
-    if (eye.style.display === 'none') {
-        eyeOff.style.display = 'none';
-        eye.style.display = 'inline';
-        password.setAttribute('type', 'password');
-        password.style.color = '#ffffff';
+    if (eye.textContent === 'visibility') {
+        eye.textContent = 'visibility_off';
+        const input = eye.previousSibling;
+        input.setAttribute('type', 'text');
+        input.style.color = '#ffa295';
+        eye.style.color = '#ffa295';
+
     } else {
-        eye.style.display = 'none';
-        eyeOff.style.display = 'inline';
-        password.setAttribute('type', 'text');
-        password.style.color = '#ff4a2a';
+        eye.textContent = 'visibility';
+        const input = eye.previousSibling;
+        input.setAttribute('type', 'password');
+        input.style.color = '#ffffff';
+        eye.style.color = '#ffffff';
     }
 }

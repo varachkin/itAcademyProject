@@ -150,7 +150,7 @@ export function buildResultBlock() {
     calculateBtn.textContent = 'calculate';
     calculateBtn.addEventListener('click', cooking);
     const toBasketBtn = createElementDom('div', 'btn');
-    toBasketBtn.textContent = 'to basket';
+    toBasketBtn.textContent = 'buy';
     resultBlock.append(imageBlockContainer);
     imageBlockContainer.append(imageBlock);
     imageBlock.append(imgDough, imgComponents, imgSouse);
