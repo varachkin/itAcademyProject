@@ -4,6 +4,24 @@ const fillingEl = document.getElementsByName('filling');
 const sauceEl = document.getElementsByName('sauce');
 
 
+export function disableInputs() {
+    fillingEl.forEach((el) => {
+        el.setAttribute('disabled', 'disabled')
+    });
+    sauceEl.forEach((el) => {
+        el.setAttribute('disabled', 'disabled')
+    });
+}
+
+function enableInputs() {
+    fillingEl.forEach((el) => {
+        el.removeAttribute('disabled');
+    });
+    sauceEl.forEach((el) => {
+        el.removeAttribute('disabled');
+    });
+}
+
 export function addListenersLabel() {
     for (let el of doughEl) {
         el.addEventListener('click', viewImgDough);
@@ -20,12 +38,6 @@ export function addListenersLabel() {
     for (let el of sauceEl) {
         el.addEventListener('click', viewImgAdditionally);
     }
-    fillingEl.forEach((el) => {
-        el.setAttribute('disabled', 'disabled')
-    });
-    sauceEl.forEach((el) => {
-        el.setAttribute('disabled', 'disabled')
-    });
 }
 
 // **************************************  Функция отображения теста **************************************//
@@ -43,12 +55,7 @@ export function viewImgDough() {
             }
         }
     }, 0);
-    fillingEl.forEach((el) => {
-        el.removeAttribute('disabled');
-    });
-    sauceEl.forEach((el) => {
-        el.removeAttribute('disabled');
-    });
+    enableInputs();
 }
 
 // *******************************   Функция отображения размера пиццы   ************************************//
@@ -111,7 +118,6 @@ export function viewImgComponents() {
             });
         }
     }
-
 }
 
 // *******************************   Функция отображения соусов для пиццы   ************************************//

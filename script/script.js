@@ -1,4 +1,4 @@
-import {viewImgDough, viewImgComponents, viewImgSize, viewImgAdditionally} from "./show-pizza.js";
+import {viewImgDough, viewImgComponents, viewImgSize, viewImgAdditionally, disableInputs} from "./show-pizza.js";
 
 let doughEl = document.getElementsByName('dough');
 let sizeEl = document.getElementsByName("size");
@@ -220,7 +220,7 @@ export function reset() {
     viewImgAdditionally();
     document.getElementById('information_cost').textContent = 'Cost: ';
     document.getElementById('information_calories').textContent = 'Calories: ';
-
+    disableInputs();
     num_components = 0;
 }
 
