@@ -58,11 +58,14 @@ export function buildHeader() {
 // *******************  Функция создания блока input  ***************************************//
 function createInput(type, name, value) {
     const fr = document.createDocumentFragment();
-    const input = createElementDom('input', `${name}`);
-    const label = createElementDom('label');
+    const input = createElementDom('input');
+    const label = createElementDom('label', `${name}`);
     label.addEventListener('click', showIcoCheckbox, true);
     input.setAttribute('name', `${name}`);
     input.setAttribute('type', `${type}`);
+    const ico = createElementDom('img', 'ico-checkbox');
+    ico.setAttribute('alt', 'ico');
+
     if (typeof (value) === 'string') {
         input.setAttribute('id', `${value}`);
         label.setAttribute('for', `${value}`);
@@ -72,10 +75,13 @@ function createInput(type, name, value) {
         input.setAttribute('id', `Size_${value}`);
         label.setAttribute('for', `Size_${value}`);
         const text = value;
-        label.textContent = `Size ${text} cm`;
+        if (window.screen.width > 350) {
+            label.textContent = `Size ${text}`;
+        } else {
+            label.textContent = `${text} cm`;
+        }
     }
-
-    fr.append(input, label);
+    fr.append(input, label, ico);
     return fr;
 }
 
@@ -111,8 +117,8 @@ export function buildFormBlock() {
     const containerForm = createElementDom('div', 'container__form');
     const x = buildForm(doughArr, 'dough');
     const u = buildForm(sizeArr, 'size');
-    const y = buildForm(componentsArr, 'components');
-    const z = buildForm(additionallyArr, 'additionally');
+    const y = buildForm(componentsArr, 'filling');
+    const z = buildForm(additionallyArr, 'sauce');
     containerForm.append(x, u, y, z);
     container.append(containerForm, buildResultBlock());
     return container;
@@ -120,10 +126,11 @@ export function buildFormBlock() {
 
 // *******************  Функция отображения иконки чекбокса возле инпута  *******************//
 export function showIcoCheckbox() {
-    const ico = createElementDom('img');
-    ico.src = "ico/pizza-checkbox.png";
-    ico.setAttribute('alt', 'ico');
-    this.before(ico);
+    setTimeout(() => {
+        if (this.previousSibling.checked) {
+            this.nextSibling.src = "ico/pizza-checkbox.png";
+        }
+    }, 0);
 }
 
 // *******************  Функция создания блока для отображения пиццы  ***********************//
@@ -132,16 +139,25 @@ export function buildResultBlock() {
     const imageBlockContainer = createElementDom('div', 'information_image');
     const imageBlock = createElementDom('div', 'img_container_block');
     const imgDough = createElementDom('div', 'img_dough_block');
-    const imgComponents = createElementDom('div', 'img_dough_block');
-    const imgSouse = createElementDom('div', 'img_dough_block');
+    for (let i = 0; i < 5; i++) {
+        imgDough.append(createElementDom('img', 'img_dough'));
+    }
+    const imgComponents = createElementDom('div', 'img_components_block');
+    for (let i = 0; i < 10; i++) {
+        imgComponents.append(createElementDom('img', 'img_components'));
+    }
+    const imgSouse = createElementDom('div', 'img_additionally_block');
+    for (let i = 0; i < 5; i++) {
+        imgSouse.append(createElementDom('img', 'img_additionally'));
+    }
     const infoBlock = createElementDom('div', 'block-btn');
     const resultInfoBlock = createElementDom('div', 'result-info');
     const cost = createElementDom('div', 'information_cost');
     cost.setAttribute('id', 'information_cost');
-    cost.textContent = 'Cost';
+    cost.textContent = 'Cost: ';
     const calories = createElementDom('div', 'information_calories');
     calories.setAttribute('id', 'information_calories');
-    calories.textContent = 'Calories';
+    calories.textContent = 'Calories: ';
     const btnBlock = createElementDom('div', 'block-btn');
     const resetBtn = createElementDom('div', 'btn');
     resetBtn.textContent = 'reset';

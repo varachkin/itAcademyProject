@@ -584,6 +584,9 @@ label span.eye-off {
 form ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 form {
@@ -611,7 +614,7 @@ li input:checked ~ label {
     color: darkorange;
 }
 
-li input:checked + img {
+li input:checked ~ img {
     opacity: 1;
 }
 
@@ -934,6 +937,11 @@ li img {
 }
 
 @media (max-width: 420px) {
+    .container {
+        padding: 10px;
+        max-width: 90%;
+    }
+
     .img-block {
         width: 300px;
         height: 300px;
@@ -967,6 +975,10 @@ li img {
         font-size: 14px;
         margin: 10px 5px 5px;
         padding: 3px 5px;
+    }
+
+    h2 {
+        padding-top: 0;
     }
 
     h3 {

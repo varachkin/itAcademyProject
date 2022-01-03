@@ -1,12 +1,10 @@
-// import {createElementDom} from "./func";
-// import {buildHeader} from "./DOM";
+import {viewImgDough, viewImgComponents, viewImgSize, viewImgAdditionally} from "./show-pizza.js";
 
-let doughEl = document.querySelectorAll("input[name='dough']");
+let doughEl = document.getElementsByName('dough');
 let sizeEl = document.getElementsByName("size");
-let componentsEl = document.getElementsByName("components");
-let additionallyEl = document.getElementsByName("additionally");
-const popup = document.getElementById('popup');
-const popupContent = document.getElementById('popup_content');
+let componentsEl = document.getElementsByName("filling");
+let additionallyEl = document.getElementsByName("sauce");
+
 let num_components = 0;
 let sendObj = {};
 
@@ -200,93 +198,6 @@ function cost(num) {
     return finalCostPizza;
 }
 
-// *************    Отображение иконки чекбокса   ***********************
-
-function showCheckboxIco(el) {
-
-
-    el.after(document.createElement('div'))
-}
-
-//   Функция отображения теста
-
-function viewImgDough() {
-    console.log(doughEl);
-    for (let i = 0; i < Array.from(doughEl).length; i++) {
-        if (doughEl[i].checked) {
-            document.querySelectorAll('.img_dough_block img')[i].style.opacity = "1";
-            // showCheckboxIco(doughEl[i]);
-        } else {
-            document.querySelectorAll('.img_dough_block img')[i].style.opacity = "0";
-        }
-    }
-}
-
-
-//   Функция отображения размера пиццы
-function viewImgSize(num) {
-    if (num === 32) {
-        for (let i = 0; i < doughEl.length; i++) {
-            document.querySelectorAll('.img_dough_block img')[i].style.width = "80%";
-            document.querySelectorAll('.img_dough_block img')[i].style.height = "80%";
-        }
-        for (let n = 0; n < componentsEl.length; n++) {
-            document.querySelectorAll('.img_components_block img')[n].style.width = "66%";
-            document.querySelectorAll('.img_components_block img')[n].style.height = "66%";
-        }
-    }
-    if (num === 40) {
-        for (let i = 0; i < doughEl.length; i++) {
-            document.querySelectorAll('.img_dough_block img')[i].style.width = "95%";
-            document.querySelectorAll('.img_dough_block img')[i].style.height = "95%";
-        }
-        for (let n = 0; n < componentsEl.length; n++) {
-            document.querySelectorAll('.img_components_block img')[n].style.width = "81%";
-            document.querySelectorAll('.img_components_block img')[n].style.height = "81%";
-        }
-    }
-    if (num === 45) {
-        for (let i = 0; i < doughEl.length; i++) {
-            document.querySelectorAll('.img_dough_block img')[i].style.width = "114%";
-            document.querySelectorAll('.img_dough_block img')[i].style.height = "114%";
-        }
-        for (let n = 0; n < componentsEl.length; n++) {
-            document.querySelectorAll('.img_components_block img')[n].style.width = "100%";
-            document.querySelectorAll('.img_components_block img')[n].style.height = "100%";
-        }
-    }
-}
-
-//   Функция отображения компонентов пиццы
-function viewImgComponents() {
-    for (let i = 0; i < componentsEl.length; i++) {
-        if (componentsEl[i].checked) {
-            document.querySelectorAll('.img_components_block img')[i].style.opacity = "1";
-            for (let n = 0; n < doughEl.length; n++) {
-                if (doughEl[n].checked) {
-                    componentsEl[i].checked = true;
-                    document.querySelectorAll('.img_components_block img')[i].style.opacity = "1";
-                    break;
-                }
-                document.querySelectorAll('.img_components_block img')[i].style.opacity = "0";
-                componentsEl[i].checked = false;
-            }
-        } else {
-            document.querySelectorAll('.img_components_block img')[i].style.opacity = "0";
-        }
-    }
-}
-
-//   Функция отображения дополнительных ингридиентов
-function viewImgAdditionally() {
-    for (let i = 0; i < additionallyEl.length; i++) {
-        if (additionallyEl[i].checked) {
-            document.querySelectorAll('.img_additionally_block img')[i].style.opacity = "1";
-        } else {
-            document.querySelectorAll('.img_additionally_block img')[i].style.opacity = "0";
-        }
-    }
-}
 
 // *******************  Функция обнуления всех форм  *******************************//
 export function reset() {
@@ -304,11 +215,11 @@ export function reset() {
     }
 
     viewImgDough();
-    viewImgSize(32);
+    viewImgSize(40);
     viewImgComponents();
     viewImgAdditionally();
-    document.getElementById('information_cost').innerHTML = 'Cost: ';
-    document.getElementById('information_calories').innerHTML = 'Calories: ';
+    document.getElementById('information_cost').textContent = 'Cost: ';
+    document.getElementById('information_calories').textContent = 'Calories: ';
 
     num_components = 0;
 }

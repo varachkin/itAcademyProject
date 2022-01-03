@@ -1,9 +1,10 @@
-// *******************  Функция создания popup  ***************************************//
 import {createElementDom} from "./create-form.js";
 
 const popup = createElementDom('div', 'popup');
 const popupContent = createElementDom('div', 'popup_content');
 
+
+// *******************  Функция создания popup  ***************************************//
 export function createPopup() {
     popup.setAttribute('id', 'popup');
     const popupContainer = createElementDom('div', 'popup_container');
