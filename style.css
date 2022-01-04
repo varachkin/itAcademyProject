@@ -478,6 +478,11 @@ h3 {
     height: 33px;
     width: 100%;
     font-size: 22px;
+    border: 1px solid #585858;
+}
+
+.main-form .input-form > input:focus {
+    border: 1px solid #ffd88d;
 }
 
 .main-form label {
@@ -516,10 +521,6 @@ label span.eye-off {
 }
 
 .page {
-    /*display: flex;*/
-    /*align-items: flex-start;*/
-    /*!*flex-direction: column;*!*/
-    /*justify-content: center;*/
     margin: 0 auto;
 }
 

@@ -80,6 +80,9 @@ function createLabel(className, type, text, arr) {
     span.style.color = '#404040';
     const input = createElementDom('input');
     input.setAttribute('type', type);
+    input.addEventListener('keyup', () => {
+        validateForm(input)
+    });
     label.append(span, input);
     if (arr) {
         for (let el of arr) {
@@ -90,7 +93,6 @@ function createLabel(className, type, text, arr) {
 }
 
 // *******************  Функция отображения пароля в поле пароль  ****************************//
-
 export function showEye() {
     let eye = this;
 
@@ -108,4 +110,37 @@ export function showEye() {
         input.style.color = '#ffffff';
         eye.style.color = '#ffffff';
     }
+}
+
+// *******************  Функция валидации формы регистрации  *********************************//
+function validateForm(el) {
+    const nameRegExp = /^[a-z а-я,.'-]+$/i;
+    const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const passRegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+    if (el.value) {
+        if (el.type === 'text') {
+            if (el.value.length > 1 && nameRegExp.test(el.value)) {
+                el.style.border = '1px solid green'
+            } else {
+                el.style.border = '1px solid red'
+            }
+        }
+        if (el.type === 'email') {
+            if (emailRegExp.test(el.value)) {
+                el.style.border = '1px solid green'
+            } else {
+                el.style.border = '1px solid red'
+            }
+        }
+        if (el.type === 'password') {
+            if (passRegExp.test(el.value)) {
+                el.style.border = '1px solid green'
+            } else {
+                el.style.border = '1px solid red'
+            }
+        }
+    } else {
+        el.style.border = ''
+    }
+
 }
