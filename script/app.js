@@ -9,7 +9,6 @@ document.querySelector('#root').append(createLoginForm());
 document.querySelector('#root').after(createPopup());
 
 
-document.querySelector('#root').append(buildFormBlock());
+// document.querySelector('#root').append(buildFormBlock());
 addListenersLabel();
 disableInputs();
-

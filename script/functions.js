@@ -1,3 +1,6 @@
+import {viewPopup} from "./popup.js";
+import {decryptPass} from "./create-login-form.js";
+
 function createInputForm(x) {
     const form = document.querySelector('.main-form');
     const confPass = document.createElement('label');
@@ -43,4 +46,32 @@ export function showHeader(item) {
 export function closeHeader() {
     const popup = document.querySelector('#popup-header');
     popup.style.transform = 'perspective(200px) translate(0, -100%) rotateX(45deg)'
+}
+
+export function signIn() {
+    const emptyInputArr = Array.from(document.getElementsByClassName('input-login')).reduce((acc, el) => {
+        if (el.value === '') {
+            acc.push(el.offsetParent.innerText.replace('visibility', ''));
+        }
+        return acc;
+    }, []);
+    if (emptyInputArr.length > 0) {
+        viewPopup('Entrance is not possible', `You need to fill in the fields: ${emptyInputArr.join(', ')}`, 'try again');
+    } else {
+        for (let i = 0; i < localStorage.length; i++) {
+            let key = localStorage.key(i);
+
+            if (key === document.querySelector('.email').value) {
+                const objUser = JSON.parse(localStorage.getItem(key));
+                if (decryptPass(objUser.pass) === document.querySelector('.password').value) {
+                    return;
+                } else {
+                    viewPopup('Error password', `Password is not correct `, 'try again')
+                }
+                return;
+            }
+        }
+        const email = document.querySelector('.email').value;
+        viewPopup('Error login', `User named ${email} does not exist. Check the correctness of the entry or register`, 'try again');
+    }
 }

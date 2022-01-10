@@ -481,13 +481,21 @@ h3 {
     border: 1px solid #585858;
 }
 
-.main-form .input-form > input:focus {
+.main-form .input-form > input:focus, .main-form .input-form > input:active {
     border: 1px solid #ffd88d;
 }
 
 .main-form label {
     width: 90%;
     position: relative;
+}
+
+.main-form .input-form > input.valid {
+    border: 1px solid #00af00;
+}
+
+.main-form .input-form > input.error-valid {
+    border: 1px solid #f90000;
 }
 
 .main-form label span {
