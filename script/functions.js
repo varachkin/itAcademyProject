@@ -1,5 +1,7 @@
 import {viewPopup} from "./popup.js";
 import {decryptPass} from "./create-login-form.js";
+import {buildFormBlock} from "./create-form.js";
+import {addListenersLabel, disableInputs} from "./show-pizza.js";
 
 function createInputForm(x) {
     const form = document.querySelector('.main-form');
@@ -49,6 +51,13 @@ export function closeHeader() {
 }
 
 export function signIn() {
+    const arrLabel = document.querySelectorAll('.input-form');
+    if (arrLabel.length > 2) {
+        document.querySelector('#last-name').remove();
+        document.querySelector('#first-name').remove();
+        document.querySelector('#conf-password').remove();
+        return;
+    }
     const emptyInputArr = Array.from(document.getElementsByClassName('input-login')).reduce((acc, el) => {
         if (el.value === '') {
             acc.push(el.offsetParent.innerText.replace('visibility', ''));
@@ -64,6 +73,11 @@ export function signIn() {
             if (key === document.querySelector('.email').value) {
                 const objUser = JSON.parse(localStorage.getItem(key));
                 if (decryptPass(objUser.pass) === document.querySelector('.password').value) {
+                    document.querySelector('.wrapper').remove();
+                    document.querySelector('h1').textContent = 'Create pizza';
+                    document.querySelector('#root').append(buildFormBlock());
+                    addListenersLabel();
+                    disableInputs();
                     return;
                 } else {
                     viewPopup('Error password', `Password is not correct `, 'try again')
