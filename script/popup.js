@@ -8,6 +8,9 @@ const popupContent = createElementDom('div', 'popup_content');
 export function createPopup() {
     popup.setAttribute('id', 'popup');
     const popupContainer = createElementDom('div', 'popup_container');
+    const spanPopupWarn = createElementDom('span', 'span_popup');
+    const spanPopup = createElementDom('span', 'text_popup');
+    const spanPopupLast = createElementDom('span', 'text_popup_last');
     popupContent.setAttribute('id', 'popup_content');
     popupContainer.append(popupContent);
     popup.append(popupContainer);
@@ -16,6 +19,7 @@ export function createPopup() {
     titlePopup.setAttribute('id', 'title_popup');
     const textPopup = createElementDom('div', 'text_popup');
     textPopup.setAttribute('id', 'text_popup');
+
     const buttonPopup = createElementDom('div', 'popup_button');
 
     popupContent.append(closePopupBlock, titlePopup, textPopup, buttonPopup);
@@ -23,24 +27,34 @@ export function createPopup() {
     closeSpan.classList.add('close');
     closeSpan.textContent = 'close';
     closePopupBlock.append(closeSpan);
+
+
+    textPopup.append(spanPopup, spanPopupWarn, spanPopupLast);
+
+
     const btn = createElementDom('div', 'btn');
     btn.setAttribute('id', 'popup_button');
     btn.textContent = 'return to select';
     buttonPopup.append(btn);
     titlePopup.textContent = 'Lorem';
-    textPopup.textContent = 'Lorem';
+    spanPopupWarn.textContent = 'Warn';
+    spanPopup.textContent = 'Text';
     closeSpan.addEventListener('click', closePopup);
     btn.addEventListener('click', closePopup);
     return popup;
 }
 
 //  *************     Функция отображения popup     ************************************//
-export function viewPopup(title, text = '', btn = 'RETURN TO SELECT') {
+export function viewPopup(title, text, span = '', spanLast = '', btn = 'RETURN TO SELECT') {
     const titlePop = document.querySelector('#title_popup');
-    const textPop = document.querySelector('#text_popup');
+    const textPop = document.querySelector('span.text_popup');
     const button = document.querySelector('#popup_button');
+    const spanPop = document.querySelector('.span_popup');
+    const spanPopLast = document.querySelector('.text_popup_last');
     titlePop.textContent = title;
     textPop.textContent = text;
+    spanPop.textContent = span;
+    spanPopLast.textContent = spanLast;
     button.textContent = btn;
     popup.style.opacity = '1';
     popup.style.visibility = 'visible';

@@ -1,116 +1,73 @@
-'use strict'
 //****************************  ОБЪЕКТЫ  *******************************//
 class Pizza {
     constructor(dough, size, components, additionally) {
         this.DoughObj = dough;
         this.SizeObj = size;
-        this.ComponentsObj = components;
-        this.AdditionallyObj = additionally;
+        this.FillingObj = components;
+        this.SauceObj = additionally;
     }
 }
-class FinalPizza extends Pizza{
+
+class FinalPizza extends Pizza {
     constructor(dough, size, components, additionally, structure) {
         super(dough, size, components, additionally);
         this.structure = structure;
     }
 }
 
-class Components {
-    constructor(x, y) {
+export class Components {
+    constructor([name, x, y]) {
+        this.name = name;
         this.cost = x;
         this.calories = y;
     }
-    validateData(obj, key){
-        if(typeof obj[key]['cost'] !== "number" || typeof obj[key]['calories'] !== "number" ){
-            return alert('Typeof cost or calories in key '+ key + ' not number');
+
+    validateData(obj, key) {
+        if (typeof obj[key]['cost'] !== "number" || typeof obj[key]['calories'] !== "number") {
+            return alert('Typeof cost or calories in key ' + key + ' not number');
         }
     }
 }
 
-let ZeroDough = new Components(0, 0)
-let ZeroSize = new Components(0, 0)
-let ZeroComponents = new Components(0, 0)
-let ZeroAdditionally = new Components(0, 0)
+export const ZeroDough = [[], 0, 0];
+export const ZeroSize = [[], 0, 0];
+export const ZeroComponents = [[], 0, 0];
+export const ZeroAdditionally = [[], 0, 0];
 
-let Thin = new Components(1,200);
-let Thick = new Components(4,500);
-let Calzone = new Components(3,300);
-let Italian = new Components(3,200);
-let Standard = new Components(1,300);
-
-let Size_32 = new Components(0.01, 0.01);
-let Size_40 = new Components(0.3, 0.3);
-let Size_45 = new Components(0.5, 0.5);
-
-let Cheese = new Components(3, 150);
-let Bacon = new Components(6, 230);
-let Tomato = new Components(2, 70);
-let Paprika = new Components(2, 70);
-let Corn = new Components(1, 90);
-let Pineapple = new Components(4, 110);
-let Olives = new Components(3, 60);
-let Shrimp = new Components(4, 130);
-let Mushrooms = new Components(8, 110);
-let Greens = new Components(1, 20);
-
-let Cheese_sauce = new Components(5, 80);
-let Tomato_sauce = new Components(5, 80);
-let Spicy_sauce = new Components(5, 80);
-let Mustard_sauce = new Components(5, 80);
-let Wasabi = new Components(5, 80);
-
-let pizzaObj = new Pizza(ZeroDough,ZeroSize,ZeroComponents,ZeroAdditionally);
-let finalPizzaObj = new FinalPizza(ZeroDough,ZeroSize,ZeroComponents,ZeroAdditionally,'');
-
-//   Объект с видами теста
-let DoughObj = {
-    Thin,
-    Thick,
-    Calzone,
-    Italian,
-    Standard,
+export const doughPrice = {
+    Thin: [1, 200],
+    Thick: [4, 500],
+    Calzone: [3, 300],
+    Italian: [3, 200],
+    Standard: [1, 300],
 };
 
-//   Объект с размерами пиццы
-let SizeObj = {
-    Size_32,
-    Size_40,
-    Size_45,
+export const sizePrice = {
+    Size_32: [0.25, 0.5],
+    Size_40: [0.3, 0.7],
+    Size_45: [0.5, 1],
 };
 
-//   Объект с видами компонентов
-let ComponentsObj = {
-    Cheese,
-    Bacon,
-    Tomato,
-    Paprika,
-    Corn,
-    Pineapple,
-    Olives,
-    Shrimp,
-    Mushrooms,
-    Greens,
+export const fillingPrice = {
+    Cheese: [3, 150],
+    Bacon: [6, 230],
+    Tomato: [2, 70],
+    Paprika: [2, 70],
+    Corn: [1, 90],
+    Pineapple: [4, 110],
+    Olives: [3, 60],
+    Shrimp: [4, 130],
+    Mushrooms: [8, 110],
+    Greens: [1, 20],
 };
 
-//   Объект с дополнительными ингредиентами
-let AdditionallyObj = {
-    Cheese_sauce,
-    Tomato_sauce,
-    Spicy_sauce,
-    Mustard_sauce,
-    Wasabi,
+export const saucePrice = {
+    Cheese_sauce: [5, 80],
+    Tomato_sauce: [5, 80],
+    Spicy_sauce: [5, 80],
+    Mustard_sauce: [5, 80],
+    Wasabi: [5, 80],
 };
-//****************************  ОБЪЕКТЫ  *******************************//
 
-for(let key in DoughObj){
-    DoughObj[key].validateData(DoughObj, key);
-}
-for(let key in SizeObj){
-    SizeObj[key].validateData(SizeObj, key);
-}
-for(let key in ComponentsObj){
-    ComponentsObj[key].validateData(ComponentsObj, key);
-}
-for(let key in AdditionallyObj){
-    AdditionallyObj[key].validateData(AdditionallyObj, key);
-}
+export const pizzaObj = new Pizza(ZeroDough, ZeroSize, ZeroComponents, ZeroAdditionally);
+export const finalPizzaObj = new FinalPizza(ZeroDough, ZeroSize, ZeroComponents, ZeroAdditionally, '');

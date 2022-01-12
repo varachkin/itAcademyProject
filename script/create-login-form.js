@@ -1,7 +1,8 @@
-import {createElementDom} from "./create-form.js";
+import {buildFormBlock, createElementDom} from "./create-form.js";
 import {animationPizza} from "./animation-start.js";
 import {viewPopup} from "./popup.js";
-import {signIn} from "./functions.js";
+import {addListenersLabel, disableInputs} from "./show-pizza.js";
+import {showHeader} from "./header.js";
 
 const form = createElementDom('form', 'main-form');
 
@@ -95,7 +96,7 @@ function showRegistration() {
         }, []);
         console.log(emptyInputArr);
         if (emptyInputArr.length > 0) {
-            viewPopup('Registration ERROR', `You need to fill in the fields: ${emptyInputArr.join(', ')}`, 'try again');
+            viewPopup('Registration ERROR', `You need to fill in the fields:`, `${emptyInputArr.join(', ')}`, '', 'try again');
             return;
         }
         if (!Array.from(arrInput).reduce((acc, el) => {
@@ -110,25 +111,25 @@ function showRegistration() {
                 acc.push(el.offsetParent.innerText.replace('visibility', ''));
                 return acc;
             }, []);
-            viewPopup('Registration ERROR', `Incorrectly entered fields of: ${arr.join(', ')}`, 'try again');
+            viewPopup('Registration ERROR', `Incorrectly entered fields of: `, `${arr.join(', ')}`, '', 'try again');
             return;
         }
         const passArr = Array.from(document.querySelectorAll('.password'));
         console.log(passArr[0].value);
         console.log(passArr[1].value);
         if (passArr[0].value !== passArr[1].value) {
-            viewPopup('Registration ERROR', `Password mismatch`, 'try again');
+            viewPopup('Registration ERROR', `Password mismatch`, '', 'try again');
             return;
         }
         const user = new User(arrInput[0].value, arrInput[1].value, arrInput[2].value, arrInput[3].value);
         for (let key in localStorage) {
             if (key === arrInput[2].value) {
-                viewPopup('Registration ERROR', `User named ${arrInput[2].value} already exists`, 'try again');
+                viewPopup('Registration ERROR', `User name already exists: `, `${arrInput[2].value} `, '', 'try again');
                 return;
             }
         }
         localStorage.setItem(arrInput[2].value, JSON.stringify(user));
-        viewPopup('Registration successfully', ``, 'enter the application');
+        viewPopup('Registration successfully', ``, '', '', 'enter the application');
         document.querySelector('#last-name').remove();
         document.querySelector('#first-name').remove();
         document.querySelector('#conf-password').remove();
@@ -297,3 +298,76 @@ export function decryptPass(str) {
     return str;
 }
 
+// *******************  Функция входа в приложение  ******************************************//
+export function signIn() {
+    const arrLabel = document.querySelectorAll('.input-form');
+    if (arrLabel.length > 2) {
+        document.querySelector('#last-name').remove();
+        document.querySelector('#first-name').remove();
+        document.querySelector('#conf-password').remove();
+        return;
+    }
+    const emptyInputArr = Array.from(document.getElementsByClassName('input-login')).reduce((acc, el) => {
+        if (el.value === '') {
+            acc.push(el.offsetParent.innerText.replace('visibility', ''));
+        }
+        return acc;
+    }, []);
+    if (emptyInputArr.length > 0) {
+        viewPopup('Entrance is not possible', `You need to fill in the fields:`, ` ${emptyInputArr.join(', ')}`, '', 'try again');
+    } else {
+        for (let i = 0; i < localStorage.length; i++) {
+            let key = localStorage.key(i);
+
+            if (key === document.querySelector('.email').value) {
+                const objUser = JSON.parse(localStorage.getItem(key));
+                if (decryptPass(objUser.pass) === document.querySelector('.password').value) {
+                    document.querySelector('.wrapper').style.display = 'none';
+                    document.querySelector('h1').textContent = 'Create pizza';
+                    const formBlock = document.querySelector('.container');
+                    if (formBlock === null) {
+                        document.querySelector('#root').append(buildFormBlock());
+                        const ulHeader = document.querySelector('.header__nav-list');
+                        ulHeader.children[0].addEventListener('click', showHeader);
+                        ulHeader.children[1].addEventListener('click', showHeader);
+                    } else {
+                        formBlock.style.display = 'block'
+                    }
+                    addListenersLabel();
+                    disableInputs();
+                    localStorage.setItem('sign in', 'true');
+                    setTimeout(signOut, 600000);
+                    return;
+                } else {
+                    viewPopup('Error password', `Password is not correct `, '', '', 'try again')
+                }
+                return;
+            }
+        }
+        const email = document.querySelector('.email').value;
+        viewPopup('Error login', `User named`, ` ${email} `, `does not exist. Check the correctness of the entry or register`, 'try again');
+    }
+}
+
+// *******************  Функция выхода из приложение  ****************************************//
+export function signOut() {
+    const formBlock = document.querySelector('.container');
+    const formBlockSign = document.querySelector('.wrapper');
+    const inputPass = document.querySelector('.password');
+    console.dir(inputPass);
+    if (inputPass !== null) {
+        inputPass.value = '';
+        inputPass.classList.remove('valid');
+        inputPass.classList.remove('valid-error');
+    }
+    formBlock.style.display = 'none';
+    if (formBlockSign !== null) {
+        formBlockSign.style.display = 'block';
+    } else {
+        document.querySelector('#root').append(createLoginForm());
+    }
+    const ulHeader = document.querySelector('.header__nav-list');
+    ulHeader.children[0].removeEventListener('click', showHeader);
+    ulHeader.children[1].removeEventListener('click', showHeader);
+    localStorage.setItem('sign in', 'false');
+}

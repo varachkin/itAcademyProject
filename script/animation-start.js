@@ -11,7 +11,4 @@ export function animationPizza() {
             pizzaPiece[i].style.display = 'none';
         }
     }, 2800);
-    setTimeout(function () {
-        body.style.overflow = 'auto';
-    }, 3000);
 }

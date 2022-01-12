@@ -13,7 +13,7 @@ export function disableInputs() {
     });
 }
 
-function enableInputs() {
+export function enableInputs() {
     fillingEl.forEach((el) => {
         el.removeAttribute('disabled');
     });

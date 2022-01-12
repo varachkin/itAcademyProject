@@ -297,9 +297,14 @@
     text-align: center;
 }
 
+
 .text_popup span {
     color: #a07637;
     font-weight: 600;
+}
+
+span.text_popup, span.text_popup_last {
+    color: #2b2b27;
 }
 
 .close_popup span {
@@ -663,7 +668,7 @@ li img {
     font-weight: 300;
 }
 
-.information_cost span {
+#information_cost, #information_calories {
     color: orange;
     padding: 0 10px;
     font-weight: 600;
@@ -675,12 +680,6 @@ li img {
     padding: 10px 20px;
     width: 100%;
     font-weight: 300;
-}
-
-.information_calories span {
-    color: orange;
-    padding: 0 10px;
-    font-weight: 600;
 }
 
 .img_container_block {
@@ -816,6 +815,10 @@ li img {
 @media (max-width: 840px) {
     main {
         justify-content: flex-start;
+    }
+
+    body {
+        overflow: auto;
     }
 
     .img-block {

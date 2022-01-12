@@ -1,7 +1,5 @@
-import {showHeader} from "./functions.js";
-import {closeHeader} from "./functions.js";
-import {reset, cooking} from "./script.js";
-
+import {reset} from "./script.js";
+import {calculate} from "./calculate.js";
 
 const doughArr = ['Standard', 'Thin', 'Thick', 'Calzone', 'Italian'];
 const sizeArr = [32, 40, 45];
@@ -16,43 +14,6 @@ export function createElementDom(tag, className) {
         el.classList.add(className);
     }
     return el;
-}
-
-// *******************  Функция создания header  ********************************************//
-export function buildHeader() {
-    const header = createElementDom('div', 'header');
-    const h1 = createElementDom('h1');
-    h1.textContent = 'Pizza shop';
-    const headerNav = createElementDom('nav', 'header__nav');
-    header.append(h1, headerNav);
-    const ulHeader = createElementDom('ul', 'header__nav-list');
-    const person = createElementDom('span', 'material-icons');
-    person.classList.add('header-icons');
-    person.textContent = 'person';
-    const basket = createElementDom('span', 'material-icons');
-    basket.classList.add('header-icons');
-    basket.textContent = 'shopping_cart';
-    ulHeader.append(createElementDom('li'), createElementDom('li'));
-    ulHeader.children[0].append(person);
-    ulHeader.children[0].addEventListener('click', () => {
-        showHeader('person')
-    });
-    ulHeader.children[1].append(basket);
-    ulHeader.children[1].addEventListener('click', () => {
-        showHeader('basket')
-    });
-    headerNav.append(ulHeader);
-    const popupHeader = createElementDom('div', 'popup-header');
-    popupHeader.id = 'popup-header';
-    const close = createElementDom('span', 'material-icons');
-    close.classList.add('close');
-    close.textContent = 'close';
-    popupHeader.append(createElementDom('div', 'close_popup'));
-    popupHeader.children[0].append(close);
-    header.append(popupHeader);
-    popupHeader.append(createElementDom('h2', 'popup-header-title'));
-    close.addEventListener('click', closeHeader);
-    return header;
 }
 
 // *******************  Функция создания блока input  ***************************************//
@@ -153,18 +114,28 @@ export function buildResultBlock() {
     const infoBlock = createElementDom('div', 'block-btn');
     const resultInfoBlock = createElementDom('div', 'result-info');
     const cost = createElementDom('div', 'information_cost');
-    cost.setAttribute('id', 'information_cost');
-    cost.textContent = 'Cost: ';
+    const costSpan = createElementDom('span');
+    const costSpanResult = createElementDom('span');
+    const costSpanSymbol = createElementDom('span');
+    costSpanSymbol.setAttribute('id', 'cost-symbol');
+    costSpanResult.setAttribute('id', 'information_cost');
+    costSpan.textContent = 'Cost: ';
+    cost.append(costSpan, costSpanResult, costSpanSymbol);
     const calories = createElementDom('div', 'information_calories');
-    calories.setAttribute('id', 'information_calories');
-    calories.textContent = 'Calories: ';
+    const caloriesSpan = createElementDom('span');
+    const caloriesSpanResult = createElementDom('span');
+    const caloriesSpanSymbol = createElementDom('span');
+    caloriesSpanSymbol.setAttribute('id', 'calories-symbol');
+    caloriesSpanResult.setAttribute('id', 'information_calories');
+    caloriesSpan.textContent = 'Calories: ';
+    calories.append(caloriesSpan, caloriesSpanResult, caloriesSpanSymbol);
     const btnBlock = createElementDom('div', 'block-btn');
     const resetBtn = createElementDom('div', 'btn');
     resetBtn.textContent = 'reset';
     resetBtn.addEventListener('click', reset);
     const calculateBtn = createElementDom('div', 'btn');
     calculateBtn.textContent = 'calculate';
-    calculateBtn.addEventListener('click', cooking);
+    calculateBtn.addEventListener('click', calculate);
     const toBasketBtn = createElementDom('div', 'btn');
     toBasketBtn.textContent = 'buy';
     resultBlock.append(imageBlockContainer);
@@ -174,7 +145,6 @@ export function buildResultBlock() {
     infoBlock.append(resultInfoBlock);
     btnBlock.append(resetBtn, calculateBtn, toBasketBtn);
     resultInfoBlock.append(cost, calories, btnBlock);
-
     return resultBlock;
 }
 
