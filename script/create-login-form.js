@@ -2,18 +2,19 @@ import {buildFormBlock, createElementDom} from "./create-form.js";
 import {animationPizza} from "./animation-start.js";
 import {viewPopup} from "./popup.js";
 import {addListenersLabel, disableInputs} from "./show-pizza.js";
-import {showHeader} from "./header.js";
+import {closeHeader, showHeader} from "./header.js";
 
 const form = createElementDom('form', 'main-form');
 
 
 // *******************  Класс создающий пользователя  *****************************************//
 class User {
-    constructor(lastName, firstName, email, pass) {
+    constructor(lastName, firstName, email, pass, date) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.email = email;
         this.pass = encryptPass(pass);
+        this.date = date;
     }
 }
 
@@ -118,7 +119,7 @@ function showRegistration() {
         console.log(passArr[0].value);
         console.log(passArr[1].value);
         if (passArr[0].value !== passArr[1].value) {
-            viewPopup('Registration ERROR', `Password mismatch`, '', 'try again');
+            viewPopup('Registration ERROR', `Password mismatch`, '', '', 'try again');
             return;
         }
         const user = new User(arrInput[0].value, arrInput[1].value, arrInput[2].value, arrInput[3].value);
@@ -327,14 +328,23 @@ export function signIn() {
                     const formBlock = document.querySelector('.container');
                     if (formBlock === null) {
                         document.querySelector('#root').append(buildFormBlock());
-                        const ulHeader = document.querySelector('.header__nav-list');
-                        ulHeader.children[0].addEventListener('click', showHeader);
-                        ulHeader.children[1].addEventListener('click', showHeader);
                     } else {
                         formBlock.style.display = 'block'
                     }
+                    const ulHeader = document.querySelector('.header__nav-list');
+                    ulHeader.children[0].addEventListener('click', showHeader);
+                    ulHeader.children[1].addEventListener('click', showHeader);
+                    localStorage.setItem('current user', `${document.querySelector('.email').value}`);
                     addListenersLabel();
                     disableInputs();
+                    const d = new Date();
+                    const hour = d.getHours();
+                    const min = d.getMinutes();
+                    const sec = d.getSeconds();
+                    const date = hour + ':' + min + ':' + sec;
+                    const user = JSON.parse(localStorage.getItem(`${document.querySelector('.email').value}`));
+                    user.date = date;
+                    localStorage.setItem(`${localStorage.getItem('current user')}`, `${JSON.stringify(user)}`);
                     localStorage.setItem('sign in', 'true');
                     setTimeout(signOut, 600000);
                     return;
@@ -344,6 +354,7 @@ export function signIn() {
                 return;
             }
         }
+
         const email = document.querySelector('.email').value;
         viewPopup('Error login', `User named`, ` ${email} `, `does not exist. Check the correctness of the entry or register`, 'try again');
     }
@@ -354,6 +365,7 @@ export function signOut() {
     const formBlock = document.querySelector('.container');
     const formBlockSign = document.querySelector('.wrapper');
     const inputPass = document.querySelector('.password');
+    const h1 = document.querySelector('h1');
     console.dir(inputPass);
     if (inputPass !== null) {
         inputPass.value = '';
@@ -366,8 +378,11 @@ export function signOut() {
     } else {
         document.querySelector('#root').append(createLoginForm());
     }
+    h1.textContent = 'Pizza shop';
     const ulHeader = document.querySelector('.header__nav-list');
     ulHeader.children[0].removeEventListener('click', showHeader);
     ulHeader.children[1].removeEventListener('click', showHeader);
     localStorage.setItem('sign in', 'false');
+    localStorage.setItem('current user', '');
+    closeHeader();
 }

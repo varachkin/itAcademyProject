@@ -59,10 +59,22 @@ export function calculate() {
 
                 document.querySelector('#information_calories').textContent = `${calories.toFixed(0)}`;
                 document.querySelector('#calories-symbol').textContent = 'Kcal';
+
             }
         }
     }
 
 
     console.log(pizzaObj);
+}
+
+// *******************  Функция добавления пиццы в корзину ***************************************//
+export function toBasket() {
+    calculate();
+    if (pizzaObj.DoughObj.name.length > 0 && pizzaObj.SizeObj.name.length > 0 && pizzaObj.FillingObj.name.length >= 3) {
+        const currentUser = localStorage.getItem('current user');
+        const user = JSON.parse(localStorage.getItem(currentUser));
+        user.pizza = pizzaObj;
+        localStorage.setItem(`${localStorage.getItem('current user')}`, JSON.stringify(user));
+    }
 }

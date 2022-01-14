@@ -301,10 +301,14 @@
 .text_popup span {
     color: #a07637;
     font-weight: 600;
+    font-size: 16px;
+    text-decoration: underline;
 }
 
 span.text_popup, span.text_popup_last {
     color: #2b2b27;
+    font-size: 14px;
+    text-decoration: none;
 }
 
 .close_popup span {
@@ -352,16 +356,17 @@ body {
     justify-content: center;
     align-items: center;
     padding: 7px 20px;
+    color: #0f1316;
     background: linear-gradient(#ffcd8e, #de7900);
     transition: 0.5s;
     border: none;
     outline: 0;
     border-radius: 4px;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 600;
     margin: 30px 20px 10px;
     text-transform: uppercase;
-    min-width: 60px;
+    min-width: 85px;
 }
 
 .btn span {
@@ -433,6 +438,29 @@ body {
 
 .header__nav-list li:hover {
     cursor: pointer;
+}
+
+.ico-header-popup {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.ico-header-popup img {
+    width: 75px;
+}
+
+#header-btn {
+    margin: 0 auto;
+    min-width: 90px;
+    position: absolute;
+    bottom: 60px;
+    left: 38%;
+}
+
+#fullNameHeader {
+    font-size: 18px;
+    color: #fffbeb;
 }
 
 h1 {
@@ -559,6 +587,7 @@ label span.eye-off {
 .popup-header-container-info {
     list-style: none;
     padding: 0;
+    margin-top: 50px;
 }
 
 .popup-li {
@@ -579,6 +608,7 @@ label span.eye-off {
 
 .popup-header-container-info li span:first-child {
     color: #de7900;
+    margin-right: 20px;
 }
 
 .container {
@@ -664,7 +694,6 @@ li img {
     font-size: 30px;
     color: #f3f3f3;
     padding: 10px 20px;
-    width: 100%;
     font-weight: 300;
 }
 
@@ -678,7 +707,6 @@ li img {
     font-size: 30px;
     color: #f3f3f3;
     padding: 10px 20px;
-    width: 100%;
     font-weight: 300;
 }
 
@@ -801,6 +829,7 @@ li img {
         font-size: 16px;
         padding: 5px 7px;
         margin: 7px;
+        min-width: 50px;
     }
 
     .block-btn {
@@ -839,9 +868,10 @@ li img {
         font-size: 16px;
     }
 
-    /*label {*/
-    /*    font-size: 22px;*/
-    /*}*/
+    #header-btn {
+        left: 45%;
+    }
+
     .main-form .input-form > input {
         font-size: 16px;
         height: 26px;
@@ -908,6 +938,10 @@ li img {
 
     h2 {
         font-size: 18px;
+    }
+
+    #header-btn {
+        left: 40%;
     }
 
     .img-block {

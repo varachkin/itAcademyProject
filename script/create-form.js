@@ -1,5 +1,6 @@
 import {reset} from "./script.js";
-import {calculate} from "./calculate.js";
+import {calculate, toBasket} from "./calculate.js";
+
 
 const doughArr = ['Standard', 'Thin', 'Thick', 'Calzone', 'Italian'];
 const sizeArr = [32, 40, 45];
@@ -137,7 +138,8 @@ export function buildResultBlock() {
     calculateBtn.textContent = 'calculate';
     calculateBtn.addEventListener('click', calculate);
     const toBasketBtn = createElementDom('div', 'btn');
-    toBasketBtn.textContent = 'buy';
+    toBasketBtn.textContent = 'to basket';
+    toBasketBtn.addEventListener('click', toBasket);
     resultBlock.append(imageBlockContainer);
     imageBlockContainer.append(imageBlock);
     imageBlock.append(imgDough, imgComponents, imgSouse);
