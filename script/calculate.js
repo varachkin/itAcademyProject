@@ -1,7 +1,7 @@
 import {doughPrice, fillingPrice, pizzaObj, saucePrice, sizePrice} from "./Objects.js";
 import {Components} from "./Objects.js";
 import {viewPopup} from "./popup.js";
-
+import {reset} from "./script.js";
 
 // *******************  Функция расчета стоимости пиццы  ***************************************//
 export function calculate() {
@@ -76,6 +76,9 @@ export function toBasket() {
         const user = JSON.parse(localStorage.getItem(currentUser));
         user.pizza = pizzaObj;
         localStorage.setItem(`${localStorage.getItem('current user')}`, JSON.stringify(user));
-        viewPopup('Successfully',)
+        const span = document.querySelector('.span_popup');
+        span.classList.add('material-icons');
+        span.style.textDecoration = 'none';
+        viewPopup('Successfully', 'Your pizza is in shopping cart  ', 'shopping_cart', '', 'continue');
     }
 }

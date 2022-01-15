@@ -10,6 +10,11 @@
     src: url(font/MaterialIcons-Regular.ttf);
 }
 
+:root {
+    --microtip-font-size: 12px;
+    --microtip-font-weight: normal;
+}
+
 /*****************     Анимация пиццы   *************************/
 @keyframes pizzaRun {
     from {

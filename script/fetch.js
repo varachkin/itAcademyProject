@@ -4,10 +4,10 @@ import {viewPopup} from "./popup.js";
 import {ZeroDough, ZeroSize, ZeroComponents, ZeroAdditionally} from "./Objects.js";
 import {Pizza, Components} from "./Objects.js";
 import {reset} from "./script.js";
+import {closeLoader, showLoader} from "./loader.js";
 
 export function sendRequest() {
-    const loader = document.querySelector('#loader-block');
-    loader.style.display = 'inline-block';
+    showLoader();
     closeHeader();
     const currentUser = localStorage.getItem('current user');
     const user = JSON.parse(localStorage.getItem(currentUser));
@@ -42,12 +42,12 @@ export function sendRequest() {
                     console.log(json)
                 })
                 .finally(() => {
-                    loader.style.display = 'none';
+                    closeLoader();
                     reset();
                 })
         }, 3000);
     } else {
-        loader.style.display = 'none';
+        closeLoader();
         viewPopup('Error', 'No pizza in the basket ', '', '', 'Ясно, понятно');
     }
 

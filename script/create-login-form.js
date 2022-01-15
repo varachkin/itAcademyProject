@@ -3,6 +3,7 @@ import {animationPizza} from "./animation-start.js";
 import {viewPopup} from "./popup.js";
 import {addListenersLabel, disableInputs} from "./show-pizza.js";
 import {closeHeader, showHeader} from "./header.js";
+import {closeLoader, showLoader} from "./loader.js";
 
 const form = createElementDom('form', 'main-form');
 
@@ -28,7 +29,7 @@ export function createLoginForm() {
     page.append(imgBlock);
     const h2 = createElementDom('h2');
     form.setAttribute('action', '');
-    h2.textContent = 'Login form';
+    h2.textContent = 'Login';
     imgBlock.append(h2, form);
     const eyeOpenPass = createElementDom('span', 'eye');
     const eyeOffPass = createElementDom('span', 'eye-off');
@@ -42,7 +43,13 @@ export function createLoginForm() {
     eyeOffPass.addEventListener('click', showEye);
     const labelEmail = createLabel('input-form', 'email', 'email');
     labelEmail.setAttribute('id', 'email');
+    labelEmail.setAttribute('aria-label', 'Examle: email@email.email');
+    labelEmail.setAttribute('data-microtip-position', 'bottom-right');
+    labelEmail.setAttribute('role', 'tooltip');
     const labelPass = createLabel('input-form', 'password', 'password', [eyeOpenPass, eyeOffPass]);
+    labelPass.setAttribute('aria-label', 'Minimum 6 characters (A-a, 0-9)');
+    labelPass.setAttribute('data-microtip-position', 'bottom-right');
+    labelPass.setAttribute('role', 'tooltip');
     labelPass.setAttribute('id', 'password');
     form.append(labelEmail, labelPass);
     const btnBlock = createElementDom('div', 'main-form-button-block');
@@ -82,10 +89,19 @@ function showRegistration() {
         eyeOffConfPass.addEventListener('click', showEye);
         const firstName = createLabel('input-form', 'text', 'first name');
         firstName.setAttribute('id', 'first-name');
+        firstName.setAttribute('aria-label', 'Minimum 2 characters (A-a, 0-9)');
+        firstName.setAttribute('data-microtip-position', 'bottom-right');
+        firstName.setAttribute('role', 'tooltip');
         const lastName = createLabel('input-form', 'text', 'last name');
         lastName.setAttribute('id', 'last-name');
+        lastName.setAttribute('aria-label', 'Minimum 2 characters (A-a, 0-9)');
+        lastName.setAttribute('data-microtip-position', 'bottom-right');
+        lastName.setAttribute('role', 'tooltip');
         const confPass = createLabel('input-form', 'password', 'confirm password', [eyeOpenConfPass, eyeOffConfPass]);
         confPass.setAttribute('id', 'conf-password');
+        confPass.setAttribute('aria-label', 'Minimum 6 characters (A-a, 0-9)');
+        confPass.setAttribute('data-microtip-position', 'bottom-right');
+        confPass.setAttribute('role', 'tooltip');
         form.prepend(lastName, firstName);
         form.append(confPass);
     } else {
@@ -323,31 +339,35 @@ export function signIn() {
             if (key === document.querySelector('.email').value) {
                 const objUser = JSON.parse(localStorage.getItem(key));
                 if (decryptPass(objUser.pass) === document.querySelector('.password').value) {
-                    document.querySelector('.wrapper').style.display = 'none';
-                    document.querySelector('h1').textContent = 'Create pizza';
-                    const formBlock = document.querySelector('.container');
-                    if (formBlock === null) {
-                        document.querySelector('#root').append(buildFormBlock());
-                    } else {
-                        formBlock.style.display = 'block'
-                    }
-                    const ulHeader = document.querySelector('.header__nav-list');
-                    ulHeader.children[0].addEventListener('click', showHeader);
-                    ulHeader.children[1].addEventListener('click', showHeader);
-                    localStorage.setItem('current user', `${document.querySelector('.email').value}`);
-                    addListenersLabel();
-                    disableInputs();
-                    const d = new Date();
-                    const hour = d.getHours();
-                    const min = d.getMinutes();
-                    const sec = d.getSeconds();
-                    const date = hour + ':' + min + ':' + sec;
-                    const user = JSON.parse(localStorage.getItem(`${document.querySelector('.email').value}`));
-                    user.date = date;
-                    localStorage.setItem(`${localStorage.getItem('current user')}`, `${JSON.stringify(user)}`);
-                    localStorage.setItem('sign in', 'true');
-                    setTimeout(signOut, 600000);
-                    return;
+                    showLoader();
+                    setTimeout(() => {
+                        document.querySelector('.wrapper').style.display = 'none';
+                        document.querySelector('h1').textContent = 'Create pizza';
+                        const formBlock = document.querySelector('.container');
+                        if (formBlock === null) {
+                            document.querySelector('#root').append(buildFormBlock());
+                        } else {
+                            formBlock.style.display = 'block'
+                        }
+                        const ulHeader = document.querySelector('.header__nav-list');
+                        ulHeader.children[0].addEventListener('click', showHeader);
+                        ulHeader.children[1].addEventListener('click', showHeader);
+                        localStorage.setItem('current user', `${document.querySelector('.email').value}`);
+                        addListenersLabel();
+                        disableInputs();
+                        const d = new Date();
+                        const hour = d.getHours();
+                        const min = d.getMinutes();
+                        const sec = d.getSeconds();
+                        const date = hour + ':' + min + ':' + sec;
+                        const user = JSON.parse(localStorage.getItem(`${document.querySelector('.email').value}`));
+                        user.date = date;
+                        localStorage.setItem(`${localStorage.getItem('current user')}`, `${JSON.stringify(user)}`);
+                        localStorage.setItem('sign in', 'true');
+                        setTimeout(signOut, 600000);
+                        closeLoader();
+                    }, 3000);
+
                 } else {
                     viewPopup('Error password', `Password is not correct `, '', '', 'try again')
                 }

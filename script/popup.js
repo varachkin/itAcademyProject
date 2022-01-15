@@ -38,6 +38,7 @@ export function createPopup() {
     buttonPopup.append(btn);
     titlePopup.textContent = 'Lorem';
     spanPopupWarn.textContent = 'Warn';
+    // spanPopupWarn.classList.add('material-icons');
     spanPopup.textContent = 'Text';
     closeSpan.addEventListener('click', closePopup);
     btn.addEventListener('click', closePopup);
@@ -67,4 +68,7 @@ export function closePopup() {
     popup.style.opacity = '0';
     popup.style.visibility = 'hidden';
     popupContent.style.transform = 'perspective(600px) translate(0, -230%) rotateX(45deg)';
+    const span = document.querySelector('.span_popup');
+    span.classList.remove('material-icons');
+    span.style.textDecoration = 'underline';
 }

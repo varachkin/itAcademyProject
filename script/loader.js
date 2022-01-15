@@ -9,3 +9,13 @@ export function buildLoader() {
     loaderBlock.style.display = 'none';
     return loaderBlock;
 }
+
+export function showLoader() {
+    const loader = document.querySelector('.loader-block');
+    loader.style.display = 'inline-block';
+}
+
+export function closeLoader() {
+    const loader = document.querySelector('.loader-block');
+    loader.style.display = 'none';
+}
