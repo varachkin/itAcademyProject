@@ -9,7 +9,8 @@ import {buildLoader} from "./loader.js";
 document.querySelector('#root').append(buildHeader(), buildLoader());
 
 if (localStorage.length === 0 || localStorage.getItem('sign in') === 'false') {
-    document.querySelector('#root').append(createLoginForm())
+    document.querySelector('#root').append(createLoginForm());
+    document.querySelector('.img-block').classList.add('img-block-animation');
 } else {
     for (let i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) === 'sign in') {

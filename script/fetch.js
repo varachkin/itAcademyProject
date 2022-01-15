@@ -32,7 +32,7 @@ export function sendRequest() {
                 ${json.pizza.FillingObj.name.join(', ').replaceAll('_', ' ')},
                 ${json.pizza.SauceObj.name.join(', ').replaceAll('_', ' ')}`;
                     const cost = (json.pizza.DoughObj.cost + json.pizza.FillingObj.cost + json.pizza.SauceObj.cost) * json.pizza.SizeObj.cost;
-                    viewPopup('Your order is accepted', `Your order № ${json.id}: `, `${pizzaStr}.`, ` Order cost: $ ${cost}`, 'OK');
+                    viewPopup('Your order is accepted', `Your order № ${json.id}: `, `${pizzaStr}.`, ` Order cost: $ ${cost.toFixed(2)}`, 'OK');
                     const user = localStorage.getItem('current user');
                     const pizzaZero = new Pizza(new Components(ZeroDough), new Components(ZeroSize), new Components(ZeroComponents), new Components(ZeroAdditionally));
                     console.log(pizzaZero);

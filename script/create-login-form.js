@@ -60,13 +60,18 @@ export function createLoginForm() {
     sign.addEventListener('click', signIn);
     btnBlock.append(reg, sign);
     imgBlock.append(btnBlock);
-    for (let i = 1; i < 9; i++) {
-        const img = createElementDom('img');
-        img.setAttribute('alt', 'pizza');
-        img.setAttribute('id', `img-${i}`);
-        img.setAttribute('src', `img/startpizza/${i}.png`);
-        imgBlock.append(img);
+
+    async function createImg() {
+        for (let i = 1; i < 9; i++) {
+            const img = createElementDom('img');
+            img.setAttribute('alt', 'pizza');
+            img.setAttribute('id', `img-${i}`);
+            await img.setAttribute('src', `img/startpizza/${i}.png`);
+            await imgBlock.append(img);
+        }
     }
+
+    createImg();
     reg.addEventListener('click', showRegistration);
     return wrapper;
 }
@@ -387,6 +392,7 @@ export function signOut() {
     const inputPass = document.querySelector('.password');
     const h1 = document.querySelector('h1');
     console.dir(inputPass);
+    document.querySelector('.img-block').classList.add('img-block-animation');
     if (inputPass !== null) {
         inputPass.value = '';
         inputPass.classList.remove('valid');

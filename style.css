@@ -229,7 +229,7 @@
     height: 650px;
     width: 650px;
     margin: 0 auto;
-    animation: pizzaRun 1.5s linear;
+    left: -1500px;
     background-image: url("img/board.png");
     background-size: cover;
     background-position: center center;
@@ -240,6 +240,11 @@
     justify-content: center;
     align-items: center;
     box-shadow: -4px 4px 21px 11px rgba(0, 0, 0, 0.72) inset;
+}
+
+.img-block-animation {
+    animation: pizzaRun 1.5s linear;
+    animation-fill-mode: forwards;
 }
 
 .img-block img {
