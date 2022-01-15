@@ -4,8 +4,9 @@ import {createPopup} from "./popup.js";
 import {buildFormBlock} from "./create-form.js";
 import {addListenersLabel, disableInputs, enableInputs} from "./show-pizza.js";
 import {signOut} from "./create-login-form.js";
+import {buildLoader} from "./loader.js";
 
-document.querySelector('#root').append(buildHeader());
+document.querySelector('#root').append(buildHeader(), buildLoader());
 
 if (localStorage.length === 0 || localStorage.getItem('sign in') === 'false') {
     document.querySelector('#root').append(createLoginForm())

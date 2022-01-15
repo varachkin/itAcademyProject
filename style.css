@@ -174,6 +174,50 @@
     }
 }
 
+.loader-block {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 40%;
+    left: 48%;
+    z-index: 999;
+}
+
+.loader-block div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #ffa832;
+    border-radius: 50%;
+    animation: loader-run 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #ffa832 transparent transparent transparent;
+}
+
+.loader-block div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.loader-block div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.loader-block div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes loader-run {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 /*****************  Блок с картинками кусков пиццы   ****************/
 .img-block {
     position: relative;
@@ -358,7 +402,7 @@ body {
     padding: 7px 20px;
     color: #0f1316;
     background: linear-gradient(#ffcd8e, #de7900);
-    transition: 0.5s;
+    transition: 0.3s;
     border: none;
     outline: 0;
     border-radius: 4px;
@@ -377,6 +421,12 @@ body {
 .btn:hover {
     cursor: pointer;
     background: linear-gradient(#edc087, #e17c02);
+}
+
+.btn:active {
+    background: linear-gradient(#82694a, #7e4800);
+    transition: 0s;
+    color: #a8a8a8;
 }
 
 .root {

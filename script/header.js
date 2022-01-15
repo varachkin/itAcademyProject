@@ -1,5 +1,6 @@
 import {createElementDom} from "./create-form.js";
 import {signOut} from "./create-login-form.js";
+import {sendRequest} from "./fetch.js";
 
 
 // *******************  Функция создания header  ********************************************//
@@ -102,6 +103,7 @@ export function showHeader() {
             liArr[3].lastChild.textContent = user.date;
             btn.textContent = 'Sign out';
             btn.addEventListener('click', signOut);
+            btn.removeEventListener('click', sendRequest);
             break;
         case 'basket':
             console.log(user);
@@ -112,6 +114,7 @@ export function showHeader() {
             liArr[2].firstChild.textContent = 'Filling: ';
             liArr[3].firstChild.textContent = 'Sauce: ';
             btn.textContent = 'buy now';
+            btn.addEventListener('click', sendRequest);
             if (user.hasOwnProperty('pizza') && user.pizza.DoughObj.name.length > 0) {
                 liArr[0].lastChild.textContent = user.pizza.DoughObj.name;
                 liArr[1].lastChild.textContent = user.pizza.SizeObj.name.replaceAll('_', ' ');

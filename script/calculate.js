@@ -76,5 +76,6 @@ export function toBasket() {
         const user = JSON.parse(localStorage.getItem(currentUser));
         user.pizza = pizzaObj;
         localStorage.setItem(`${localStorage.getItem('current user')}`, JSON.stringify(user));
+        viewPopup('Successfully',)
     }
 }

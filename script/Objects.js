@@ -1,5 +1,5 @@
 //****************************  ОБЪЕКТЫ  *******************************//
-class Pizza {
+export class Pizza {
     constructor(dough, size, components, additionally) {
         this.DoughObj = dough;
         this.SizeObj = size;
