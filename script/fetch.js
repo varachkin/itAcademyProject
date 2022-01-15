@@ -12,7 +12,7 @@ export function sendRequest() {
     closeHeader();
     const currentUser = localStorage.getItem('current user');
     const user = JSON.parse(localStorage.getItem(currentUser));
-    if (user.pizza.DoughObj.name.length > 0) {
+    if (user.hasOwnProperty('pizza') && user.pizza.DoughObj.name.length > 0) {
         setTimeout(() => {
             fetch('https://jsonplaceholder.typicode.com/posts', {
                 method: 'POST',
