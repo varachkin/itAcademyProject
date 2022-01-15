@@ -19,9 +19,12 @@ export function buildHeader() {
     basket.classList.add('header-icons');
     basket.setAttribute('id', 'basket');
     basket.textContent = 'shopping_cart';
-    ulHeader.append(createElementDom('li'), createElementDom('li'));
+    ulHeader.append(createElementDom('li'), createElementDom('li'), createElementDom('li'));
     ulHeader.children[0].append(person);
     ulHeader.children[1].append(basket);
+    const numBasket = createElementDom('span', 'num');
+    numBasket.textContent = '1';
+    ulHeader.children[1].append(numBasket);
     headerNav.append(ulHeader);
     const popupHeader = createElementDom('div', 'popup-header');
     popupHeader.setAttribute('id', 'popup-header');
@@ -65,7 +68,6 @@ export function buildHeader() {
         el.append(document.createElement("span"));
     }
 
-
     btn.textContent = 'sign out';
     btnBlock.append(btn);
     popupHeader.append(h3, ulPopupHeader, btnBlock);
@@ -99,7 +101,7 @@ export function showHeader() {
             btn.removeEventListener('click', sendRequest);
             break;
         case 'basket':
-            console.log(user);
+            document.querySelector('.num').style.opacity = 0;
             title.textContent = 'Your basket';
             fullName.textContent = user.firstName + ' ' + user.lastName;
             liArr[0].firstChild.textContent = 'Dough: ';

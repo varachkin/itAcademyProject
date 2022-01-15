@@ -79,5 +79,6 @@ export function toBasket() {
         span.classList.add('material-icons');
         span.style.textDecoration = 'none';
         viewPopup('Successfully', 'Your pizza is in shopping cart  ', 'shopping_cart', '', 'continue');
+        document.querySelector('.num').style.opacity = 1;
     }
 }
