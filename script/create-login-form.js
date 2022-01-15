@@ -47,7 +47,7 @@ export function createLoginForm() {
     labelEmail.setAttribute('data-microtip-position', 'bottom-right');
     labelEmail.setAttribute('role', 'tooltip');
     const labelPass = createLabel('input-form', 'password', 'password', [eyeOpenPass, eyeOffPass]);
-    labelPass.setAttribute('aria-label', 'Minimum 6 characters (A-a, 0-9)');
+    labelPass.setAttribute('aria-label', 'Minimum 8 characters (A-a, 0-9)');
     labelPass.setAttribute('data-microtip-position', 'bottom-right');
     labelPass.setAttribute('role', 'tooltip');
     labelPass.setAttribute('id', 'password');
