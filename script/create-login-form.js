@@ -392,7 +392,10 @@ export function signOut() {
     const inputPass = document.querySelector('.password');
     const h1 = document.querySelector('h1');
     console.dir(inputPass);
-    document.querySelector('.img-block').classList.add('img-block-animation');
+    if (document.querySelector('.img-block') !== null) {
+        document.querySelector('.img-block').classList.add('img-block-animation');
+    }
+
     if (inputPass !== null) {
         inputPass.value = '';
         inputPass.classList.remove('valid');
@@ -403,6 +406,7 @@ export function signOut() {
         formBlockSign.style.display = 'block';
     } else {
         document.querySelector('#root').append(createLoginForm());
+        document.querySelector('.img-block').classList.add('img-block-animation');
     }
     h1.textContent = 'Pizza shop';
     const ulHeader = document.querySelector('.header__nav-list');

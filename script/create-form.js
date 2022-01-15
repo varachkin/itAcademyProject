@@ -1,4 +1,4 @@
-import {reset} from "./script.js";
+import {reset} from "./reset.js";
 import {calculate, toBasket} from "./calculate.js";
 
 

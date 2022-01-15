@@ -8,9 +8,19 @@ import {buildLoader} from "./loader.js";
 
 document.querySelector('#root').append(buildHeader(), buildLoader());
 
+
+// *******************  Функция добавления формы логина на странице  *************************//
+async function showCreateLoginForm() {
+    await document.querySelector('#root').append(createLoginForm());
+}
+
 if (localStorage.length === 0 || localStorage.getItem('sign in') === 'false') {
-    document.querySelector('#root').append(createLoginForm());
-    document.querySelector('.img-block').classList.add('img-block-animation');
+    showCreateLoginForm();
+
+    setTimeout(() => {
+        document.querySelector('.img-block').classList.add('img-block-animation')
+    }, 500);
+
 } else {
     for (let i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) === 'sign in') {

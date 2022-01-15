@@ -3,9 +3,10 @@ import {closeHeader} from "./header.js";
 import {viewPopup} from "./popup.js";
 import {ZeroDough, ZeroSize, ZeroComponents, ZeroAdditionally} from "./Objects.js";
 import {Pizza, Components} from "./Objects.js";
-import {reset} from "./script.js";
+import {reset} from "./reset.js";
 import {closeLoader, showLoader} from "./loader.js";
 
+// *******************************   Функция отправки запроса на placeholder   *******************************//
 export function sendRequest() {
     showLoader();
     closeHeader();

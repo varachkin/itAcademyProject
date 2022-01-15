@@ -74,13 +74,6 @@ export function buildHeader() {
     return header;
 }
 
-// *******************  Функция создания popupHeader  ********************************************//
-function buildPopupHeader() {
-
-
-    // popup.append(close)
-}
-
 //***************   Функция открытия меню  хедера  ***************************
 export function showHeader() {
     const title = document.querySelector('.popup-header-title');

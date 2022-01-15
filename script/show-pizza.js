@@ -58,7 +58,7 @@ export function viewImgDough() {
     enableInputs();
 }
 
-// *******************************   Функция отображения размера пиццы   ************************************//
+// *******************************   Функция отображения размера пиццы   **********************************//
 export function viewImgSize(num) {
     if (num === 32) {
         for (let i = 0; i < doughEl.length; i++) {
@@ -95,7 +95,7 @@ export function viewImgSize(num) {
     }
 }
 
-// *******************************   Функция отображения компонентов пиццы   ************************************//
+// *******************************   Функция отображения компонентов пиццы   ******************************//
 export function viewImgComponents() {
 
     const imgComponent = document.querySelectorAll('.img_components');
@@ -120,7 +120,7 @@ export function viewImgComponents() {
     }
 }
 
-// *******************************   Функция отображения соусов для пиццы   ************************************//
+// *******************************   Функция отображения соусов для пиццы   *******************************//
 export function viewImgAdditionally() {
     const imgSauce = document.querySelectorAll('.img_additionally');
     setTimeout(() => {

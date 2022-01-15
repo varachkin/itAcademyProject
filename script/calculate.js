@@ -1,7 +1,6 @@
 import {doughPrice, fillingPrice, pizzaObj, saucePrice, sizePrice} from "./Objects.js";
 import {Components} from "./Objects.js";
 import {viewPopup} from "./popup.js";
-import {reset} from "./script.js";
 
 // *******************  Функция расчета стоимости пиццы  ***************************************//
 export function calculate() {
