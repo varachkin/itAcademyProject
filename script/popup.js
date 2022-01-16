@@ -69,6 +69,8 @@ export function closePopup() {
     popup.style.visibility = 'hidden';
     popupContent.style.transform = 'perspective(600px) translate(0, -230%) rotateX(45deg)';
     const span = document.querySelector('.span_popup');
-    span.classList.remove('material-icons');
-    span.style.textDecoration = 'underline';
+    setTimeout(() => {
+        span.classList.remove('material-icons');
+        span.style.textDecoration = 'underline';
+    }, 500);
 }

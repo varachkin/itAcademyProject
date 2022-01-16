@@ -361,9 +361,9 @@ export function signIn() {
                         addListenersLabel();
                         disableInputs();
                         const d = new Date();
-                        const hour = d.getHours();
-                        const min = d.getMinutes();
-                        const sec = d.getSeconds();
+                        const hour = d.getHours().toString().length === 1 ? '0' + d.getHours() : d.getHours();
+                        const min = d.getMinutes().toString().length === 1 ? '0' + d.getMinutes() : d.getMinutes();
+                        const sec = d.getSeconds().toString().length === 1 ? '0' + d.getSeconds() : d.getSeconds();
                         const date = hour + ':' + min + ':' + sec;
                         const user = JSON.parse(localStorage.getItem(`${document.querySelector('.email').value}`));
                         user.date = date;
