@@ -4,7 +4,11 @@ import {viewPopup} from "./popup.js";
 import {addListenersLabel, disableInputs} from "./show-pizza.js";
 import {closeHeader, showHeader} from "./header.js";
 import {closeLoader, showLoader} from "./loader.js";
+import {checkUse, countNotActiveSec} from "./app.js";
 
+
+let count;
+let check;
 const form = createElementDom('form', 'main-form');
 
 
@@ -81,8 +85,6 @@ function showRegistration() {
     const arrLabel = document.querySelectorAll('.input-form');
     const arrInput = document.querySelectorAll('.input-login');
     const notValidInputArr = document.getElementsByClassName('error-valid');
-    console.log(notValidInputArr);
-    console.log(arrInput);
     if (arrLabel.length < 3) {
         const eyeOpenConfPass = createElementDom('span', 'eye');
         const eyeOffConfPass = createElementDom('span', 'eye-off');
@@ -360,6 +362,8 @@ export function signIn() {
                         localStorage.setItem('current user', `${document.querySelector('.email').value}`);
                         addListenersLabel();
                         disableInputs();
+                        count = setInterval(countNotActiveSec, 1000);
+                        check = setInterval(checkUse, 1000);
                         const d = new Date();
                         const hour = d.getHours().toString().length === 1 ? '0' + d.getHours() : d.getHours();
                         const min = d.getMinutes().toString().length === 1 ? '0' + d.getMinutes() : d.getMinutes();
@@ -369,7 +373,6 @@ export function signIn() {
                         user.date = date;
                         localStorage.setItem(`${localStorage.getItem('current user')}`, `${JSON.stringify(user)}`);
                         localStorage.setItem('sign in', 'true');
-                        setTimeout(signOut, 600000);
                         closeLoader();
                     }, 3000);
 
@@ -391,7 +394,6 @@ export function signOut() {
     const formBlockSign = document.querySelector('.wrapper');
     const inputPass = document.querySelector('.password');
     const h1 = document.querySelector('h1');
-    console.dir(inputPass);
     if (document.querySelector('.img-block') !== null) {
         document.querySelector('.img-block').classList.add('img-block-animation');
     }
@@ -407,12 +409,16 @@ export function signOut() {
     } else {
         document.querySelector('#root').append(createLoginForm());
         document.querySelector('.img-block').classList.add('img-block-animation');
+
     }
     h1.textContent = 'Pizza shop';
+    document.querySelector('.num').style.opacity = 0;
     const ulHeader = document.querySelector('.header__nav-list');
     ulHeader.children[0].removeEventListener('click', showHeader);
     ulHeader.children[1].removeEventListener('click', showHeader);
     localStorage.setItem('sign in', 'false');
     localStorage.setItem('current user', '');
     closeHeader();
+    clearInterval(count);
+    clearInterval(check);
 }

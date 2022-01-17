@@ -6,8 +6,32 @@ import {addListenersLabel, disableInputs, enableInputs} from "./show-pizza.js";
 import {signOut} from "./create-login-form.js";
 import {buildLoader} from "./loader.js";
 
+
+const timeOut = 600;
+
 document.querySelector('#root').append(buildHeader(), buildLoader());
 
+// ****************** функции проверки активности пользователя ******************************//
+let notActiveSec = 0;
+
+export function countNotActiveSec() {
+    notActiveSec++;
+}
+
+export function checkUse() {
+    if (notActiveSec >= timeOut && localStorage.getItem('sign in') === 'true') {
+        signOut();
+    }
+    console.log(notActiveSec);
+}
+
+export function activeUse() {
+    notActiveSec = 0;
+}
+
+
+document.body.addEventListener('mousemove', activeUse);
+//**********************************************************************************************//
 
 // *******************  Функция добавления формы логина на странице  *************************//
 async function showCreateLoginForm() {
@@ -16,7 +40,6 @@ async function showCreateLoginForm() {
 
 if (localStorage.length === 0 || localStorage.getItem('sign in') === 'false') {
     showCreateLoginForm();
-
     setTimeout(() => {
         document.querySelector('.img-block').classList.add('img-block-animation')
     }, 500);
@@ -30,7 +53,6 @@ if (localStorage.length === 0 || localStorage.getItem('sign in') === 'false') {
             const ulHeader = document.querySelector('.header__nav-list');
             ulHeader.children[0].addEventListener('click', showHeader);
             ulHeader.children[1].addEventListener('click', showHeader);
-            setTimeout(signOut, 600000);
         }
     }
     const doughArr = document.getElementsByName('dough');
