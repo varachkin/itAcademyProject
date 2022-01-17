@@ -194,8 +194,8 @@ export function showEye() {
         eye.textContent = 'visibility_off';
         const input = eye.previousSibling;
         input.setAttribute('type', 'text');
-        input.style.color = '#ffa295';
-        eye.style.color = '#ffa295';
+        input.style.color = '#ffc6bf';
+        eye.style.color = '#ff2000';
 
     } else {
         eye.textContent = 'visibility';
