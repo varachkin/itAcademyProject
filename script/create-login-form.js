@@ -62,7 +62,10 @@ export function createLoginForm() {
     const sign = createElementDom('div', 'btn');
     sign.textContent = 'Sign in';
     sign.addEventListener('click', signIn);
-    btnBlock.append(reg, sign);
+    const signWithoutReg = createElementDom('div', 'btn');
+    signWithoutReg.textContent = 'as guest';
+    signWithoutReg.addEventListener('click', signInWithoutReg);
+    btnBlock.append(reg, sign, signWithoutReg);
     imgBlock.append(btnBlock);
 
     async function createImg() {
@@ -386,6 +389,44 @@ export function signIn() {
         const email = document.querySelector('.email').value;
         viewPopup('Error login', `User named`, ` ${email} `, `does not exist. Check the correctness of the entry or register`, 'try again');
     }
+}
+
+export function signInWithoutReg(){
+    showLoader();
+    const formBlockSign = document.querySelector('.wrapper');
+    formBlockSign.style.display = 'none';
+    setTimeout(() => {
+        closeLoader();
+        document.querySelector('.wrapper').style.display = 'none';
+        document.querySelector('h1').textContent = 'Create pizza';
+        const formBlock = document.querySelector('.container');
+        if (formBlock === null) {
+            document.querySelector('#root').append(buildFormBlock());
+        } else {
+            formBlock.style.display = 'block'
+        }
+        const ulHeader = document.querySelector('.header__nav-list');
+        console.log(ulHeader);
+        ulHeader.children[0].addEventListener('click', showHeader);
+        ulHeader.children[1].addEventListener('click', showHeader);
+        localStorage.setItem('current user', `guest`);
+        addListenersLabel();
+        disableInputs();
+        count = setInterval(countNotActiveSec, 1000);
+        check = setInterval(checkUse, 1000);
+        const d = new Date();
+        const hour = d.getHours().toString().length === 1 ? '0' + d.getHours() : d.getHours();
+        const min = d.getMinutes().toString().length === 1 ? '0' + d.getMinutes() : d.getMinutes();
+        const sec = d.getSeconds().toString().length === 1 ? '0' + d.getSeconds() : d.getSeconds();
+        const date = hour + ':' + min + ':' + sec;
+        const user = new User('guest','guest','guest','guest');
+        user.date = date;
+        localStorage.setItem(`${localStorage.getItem('current user')}`, `${JSON.stringify(user)}`);
+        localStorage.setItem('sign in', 'true');
+    }, 3000);
+
+    // document.querySelector('#root').append(buildFormBlock());
+
 }
 
 // *******************  Функция выхода из приложение  ****************************************//
