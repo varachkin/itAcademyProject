@@ -77,9 +77,9 @@
     }
     to {
         opacity: 0;
-        transform: rotateZ(-120deg);
-        top: -1000px;
-        left: -500px;
+        transform: scale(9) rotate3d(100, 200, 300, 120deg);
+        top: -120vh;
+        left: -120vw;
         display: none;
     }
 }
@@ -90,10 +90,10 @@
         left: 0;
     }
     to {
-        transform: rotateZ(120deg);
-        opacity: 0.3;
-        top: -1000px;
-        left: 500px;
+        transform: scale(6) rotateZ(-100deg) translateZ(40px);
+        opacity: 0;
+        top: -100vh;
+        left: 100vw;
         display: none;
     }
 }
@@ -104,10 +104,10 @@
         left: 0;
     }
     to {
-        transform: rotateZ(120deg);
-        opacity: 0.3;
-        top: -900px;
-        left: 1000px;
+        transform: scale(9) rotate3d(100, 200, 300, 120deg);
+        opacity: 0;
+        top: -100vh;
+        left: 100vw;
         display: none;
     }
 }
@@ -118,10 +118,10 @@
         left: 0;
     }
     to {
-        transform: rotateZ(-120deg);
-        opacity: 0.3;
-        top: 900px;
-        left: 1200px;
+        transform: scale(6) rotateZ(-100deg) translateZ(40px);
+        opacity: 0;
+        top: 100vh;
+        left: 100vw;
         display: none;
     }
 }
@@ -132,10 +132,10 @@
         left: 0;
     }
     to {
-        transform: rotateZ(-120deg);
-        opacity: 0.3;
-        top: 1000px;
-        left: 500px;
+        transform: scale(9) rotate3d(100, 200, 300, 120deg);
+        opacity: 0;
+        top: 100vh;
+        left: 100vw;
         display: none;
     }
 }
@@ -146,10 +146,10 @@
         left: 0;
     }
     to {
-        transform: rotateZ(120deg);
-        opacity: 0.3;
-        top: 1000px;
-        left: -500px;
+        transform: scale(6) rotateZ(-100deg) translateZ(40px);
+        opacity: 0;
+        top: 100vh;
+        left: -100vw;
         display: none;
     }
 }
@@ -160,10 +160,10 @@
         left: 0;
     }
     to {
-        transform: rotateZ(120deg);
-        opacity: 0.3;
-        top: 900px;
-        left: -1200px;
+        transform: scale(9) rotate3d(100, 200, 300, 120deg);
+        opacity: 0;
+        top: 120vh;
+        left: -100vw;
         display: none;
     }
 }
@@ -174,10 +174,10 @@
         left: 0;
     }
     to {
-        transform: rotateZ(-120deg);
-        opacity: 0.3;
-        top: -900px;
-        left: -1200px;
+        transform: scale(6) rotateZ(100deg) translateZ(40px);
+        opacity: 0;
+        top: -120vh;
+        left: -100vw;
         display: none;
     }
 }
