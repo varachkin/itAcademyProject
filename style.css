@@ -254,62 +254,41 @@
     position: absolute;
     width: 100%;
     border-radius: 50%;
+    animation-duration: 1.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
 .img-block .img-1 {
     animation-name: pizzaClear1;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
 }
 
 .img-block .img-2 {
     animation-name: pizzaClear2;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
 }
 
 .img-block .img-3 {
     animation-name: pizzaClear3;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
 }
 
 .img-block .img-4 {
     animation-name: pizzaClear4;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
 }
 
 .img-block .img-5 {
     animation-name: pizzaClear5;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
 }
 
 .img-block .img-6 {
     animation-name: pizzaClear6;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
 }
 
 .img-block .img-7 {
     animation-name: pizzaClear7;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
 }
 
 .img-block .img-8 {
     animation-name: pizzaClear8;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
 }
 
 /*******************        Попап       ***************************/

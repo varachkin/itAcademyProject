@@ -9,5 +9,5 @@ export function animationPizza() {
         for (let i = 0; i < pizzaPiece.length; i++) {
             pizzaPiece[i].style.display = 'none';
         }
-    }, 1500);
+    }, 6000);
 }
